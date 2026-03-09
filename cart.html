@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Expert | Shopping Archive</title>
+    <link rel="shortcut icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="apple-touch-icon" href="./assets/fav-ico.png?v=3.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #111827;
+            --color-secondary: #6B7280;
+            --color-highlight: #F59E0B;
+        }
+        * { font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        #menu-toggle:checked ~ #mobile-menu {
+            display: flex;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .item-row:hover .trash-btn { opacity: 1; transform: translateX(0); }
+        .trash-btn { opacity: 0; transform: translateX(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased flex flex-col">
+    <!-- Master Header -->
+    <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
+        <div class="w-[65%] mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <img src="./assets/expert_logo.png" alt="Expert Logo"
+                    class="h-9 group-hover:scale-105 transition-transform duration-300">
+            </a>
+
+            <!-- Centered Menu -->
+            <ul
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[14px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+            </ul>
+
+            <div class="flex items-center gap-6 shrink-0">
+                <div class="hidden md:flex items-center gap-8 text-gray-600">
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="cart.html" class="text-primary relative group transition-all">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-primary text-white text-[9px] w-4.5 h-4.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform font-bold">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <div class="lg:hidden flex items-center">
+                    <input type="checkbox" id="menu-toggle" class="absolute hidden">
+                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
+                            class="fa-solid fa-bars-staggered"></i></label>
+                    <div id="mobile-menu"
+                        class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
+                        <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
+                        <a href="collection.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                        <a href="explore.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                        <a href="journal.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow w-[65%] mx-auto py-24">
+        <div id="cart-container" class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+            <!-- Left Side: Items List -->
+            <div class="lg:col-span-8 space-y-16">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-gray-100 pb-12">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <span class="w-12 h-[1px] bg-highlight"></span>
+                            <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Session Archive</span>
+                        </div>
+                        <h1 class="text-4xl font-black tracking-tighter uppercase leading-none">Your <br> Collection.</h1>
+                    </div>
+                    <div class="flex items-center gap-8">
+                        <div class="text-right hidden md:block">
+                            <span class="block text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1">Status</span>
+                            <span class="flex items-center gap-2 text-[10px] font-black uppercase text-green-500">
+                                <span class="status-dot animate-bounce"></span> Secure Gateway
+                            </span>
+                        </div>
+                        <button onclick="clearCart()" class="group flex items-center gap-3 bg-gray-100 hover:bg-black text-gray-500 hover:text-white px-6 py-3 rounded-full transition-all duration-500">
+                            <i class="fa-solid fa-trash-can text-xs opacity-50 group-hover:opacity-100"></i>
+                            <span class="text-[9px] font-black uppercase tracking-widest">Wipe Buffer</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Items Grid -->
+                <div id="cart-items" class="space-y-8">
+                    <!-- Dynamic Items Injected Here -->
+                </div>
+            </div>
+
+            <!-- Right Side: Settlement -->
+            <div class="lg:col-span-4">
+                <div class="sticky top-32 space-y-8">
+                    <div class="bg-black text-white p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary via-transparent to-highlight/5 opacity-40"></div>
+                        <div class="relative z-10 space-y-10">
+                            <div class="space-y-6">
+                                <span class="text-highlight font-black uppercase tracking-[0.4em] text-[10px] block mb-2">Checkout Protocol</span>
+                                <h2 class="text-3xl font-black tracking-tighter uppercase leading-none">Order <br> Summary.</h2>
+                            </div>
+
+                            <div class="space-y-4 border-t border-white/10 pt-8 mt-8">
+                                <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                    <span>Sub-Total Metadata</span>
+                                    <span id="gross-total" class="text-white">$0.00</span>
+                                </div>
+                                <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                    <span>Shipping Logistics</span>
+                                    <span class="text-green-400">Complimentary</span>
+                                </div>
+                                <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                    <span>Tax Valuation</span>
+                                    <span class="text-white">$0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-8 border-t border-white/20 flex flex-col gap-2">
+                                <span class="text-[9px] font-black uppercase tracking-[0.5em] text-highlight">Final Settlement</span>
+                                <div class="flex justify-between items-end">
+                                    <span id="final-total" class="text-5xl font-black tracking-tighter">$0.00</span>
+                                    <span class="text-[8px] font-bold text-white/30 uppercase tracking-widest mb-1">USD</span>
+                                </div>
+                            </div>
+
+                            <button onclick="checkout()" class="w-full bg-white text-black py-6 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] hover:bg-highlight hover:text-white transition-all transform hover:-translate-y-1 active:scale-95 shadow-xl">
+                                Complete Transaction
+                            </button>
+                            
+                            <p class="text-[8px] text-center text-white/20 font-bold uppercase tracking-widest">
+                                <i class="fa-solid fa-lock text-[7px] mr-1"></i> End-to-End Encryption Enabled
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Additional Sidebar Info -->
+                    <div class="bg-black/5 backdrop-blur-xl border-2 border-white p-6 rounded-2xl shadow-2xl space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-truck-fast text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest">Global Express</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">3-5 Business Days Delivery</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-shield-halved text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest">Purchase Guard</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">30-Day Technical Warranty</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State Redesign -->
+        <div id="empty-cart" class="hidden py-48 text-center max-w-xl mx-auto space-y-12">
+            <div class="relative inline-block">
+                <div class="w-40 h-40 bg-gray-50 rounded-full flex items-center justify-center mx-auto relative z-10 border border-gray-100 shadow-inner">
+                    <i class="fa-solid fa-box-archive text-gray-200 text-6xl"></i>
+                </div>
+                <div class="absolute -top-4 -right-4 w-20 h-20 bg-highlight/5 rounded-full blur-2xl animate-pulse"></div>
+            </div>
+            <div class="space-y-6">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="w-8 h-[1px] bg-gray-200"></span>
+                    <span class="text-gray-400 font-black uppercase tracking-[0.5em] text-[9px]">Null Buffer</span>
+                    <span class="w-8 h-[1px] bg-gray-200"></span>
+                </div>
+                <h2 class="text-5xl font-black tracking-tighter uppercase leading-none">Archive is <br> Vacant.</h2>
+                <p class="text-gray-400 font-light text-lg max-w-md mx-auto">
+                    Your current session metadata contains no product acquisitions. Explore our elite collections to populate the archive.
+                </p>
+            </div>
+            <a href="explore.html" class="inline-flex items-center gap-4 bg-primary text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-highlight hover:shadow-2xl hover:shadow-highlight/20 transition-all duration-500 group">
+                Populate Archive
+                <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Master Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-24 pb-12">
+        <div class="w-[65%] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+                <div class="col-span-1 md:col-span-1 space-y-8">
+                    <img src="./assets/expert_logo.png" alt="Expert" class="h-8">
+                    <p class="text-gray-400 font-light leading-relaxed">
+                        Curating the world's most sophisticated tech and lifestyle essentials. Quality refined for the
+                        modern era.
+                    </p>
+                    <div class="flex gap-6 text-gray-300">
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">Shop</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li><a href="collection.html" class="hover:text-primary transition-colors">All Collections</a>
+                        </li>
+                        <li><a href="explore.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Gift Cards</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sale Inquiries</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">About</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li><a href="journal.html" class="hover:text-primary transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">Visit Us</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">
+                        Flagship Store <br> 128 Expert Ave, Modern District <br> NY 10001, United States
+                    </p>
+                    <p class="text-primary font-bold text-sm">contact@expert.com</p>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col md:flex-row items-center gap-3 md:gap-6">
+                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em]">
+                        &copy; 2026 EXPERT SERIES
+                    </p>
+                    <div class="hidden md:block w-[1px] h-3 bg-gray-200"></div>
+                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
+                        ENGINEERED BY <span class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
+                    </p>
+                </div>
+                <div class="flex items-center gap-4 grayscale opacity-30">
+                    <i class="fa-brands fa-cc-visa text-2xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                    <i class="fa-brands fa-cc-apple-pay text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="./script/cart.js"></script>
+    <script src="./script/cart_view.js"></script>
+</body>
+
+</html>

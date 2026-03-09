@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Expert | Collection Archive</title>
+    <link rel="icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="shortcut icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="apple-touch-icon" href="./assets/fav-ico.png?v=3.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #111827;
+            --color-highlight: #F59E0B;
+        }
+        * { font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        #menu-toggle:checked ~ #mobile-menu {
+            display: flex;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 min-h-screen antialiased">
+    <!-- Master Header -->
+    <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
+        <div class="w-[65%] mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <img src="./assets/expert_logo.png" alt="Expert Logo"
+                    class="h-9 group-hover:scale-105 transition-transform duration-300">
+            </a>
+
+            <!-- Centered Menu -->
+            <ul
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[14px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="collection.html" class="text-primary transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+            </ul>
+
+            <div class="flex items-center gap-6 shrink-0">
+                <div class="hidden md:flex items-center gap-8 text-gray-600">
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="cart.html" class="hover:text-primary relative group transition-all">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-primary text-white text-[9px] w-4.5 h-4.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform font-bold">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <div class="lg:hidden flex items-center">
+                    <input type="checkbox" id="menu-toggle" class="absolute hidden">
+                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
+                            class="fa-solid fa-bars-staggered"></i></label>
+                    <div id="mobile-menu"
+                        class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
+                        <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
+                        <a href="collection.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                        <a href="explore.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                        <a href="journal.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-[65%] mx-auto py-24 space-y-24">
+        <!-- Header Section -->
+        <div class="space-y-6 animate-fade-in text-center lg:text-left">
+            <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Curation Hub</span>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase">THE ARCHIVE.</h1>
+            <p class="text-gray-400 font-light text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                A meticulously curated selection of modern essentials, filtered for the discerning eye. Explore our
+                specialized chronicles.
+            </p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
+
+            <!-- Featured Large: 2 Cols, 2 Rows -->
+            <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                onclick="window.location.href='explore.html?cat=electronics'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=1000&auto=format&fit=crop"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    alt="Technology Series">
+                <div class="absolute bottom-10 left-10 z-20 space-y-2">
+                    <span class="text-highlight font-black uppercase tracking-widest text-[9px]">Series 01</span>
+                    <h3 class="text-4xl font-black text-white uppercase tracking-tighter leading-none">Technology <br>
+                        Essentials.</h3>
+                    <p
+                        class="text-gray-300 text-sm font-light opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                        Curating the future of digital performance.</p>
+                </div>
+            </div>
+
+            <!-- Wide Medium: 2 Cols, 1 Row -->
+            <div class="md:col-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                onclick="window.location.href='explore.html?cat=men'">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 z-10">
+                </div>
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    alt="Lifestyle Collection">
+                <div class="absolute inset-0 flex items-center justify-center z-20">
+                    <div class="text-center group-hover:scale-110 transition-transform duration-500">
+                        <h3 class="text-2xl font-black text-white uppercase tracking-[0.2em]">Lifestyle</h3>
+                        <span class="text-highlight font-bold uppercase text-[10px] tracking-widest">New Arrivals</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Square: 1 Col, 1 Row (Audio) -->
+            <div class="group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                onclick="window.location.href='explore.html?cat=electronics'">
+                <div class="absolute inset-0 bg-primary/20 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop"
+                    class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                <div class="absolute top-6 left-6 z-20">
+                    <i class="fa-solid fa-headphones text-white text-xl"></i>
+                </div>
+                <div class="absolute bottom-6 left-6 z-20">
+                    <h4 class="text-sm font-black text-white uppercase tracking-widest">Audio</h4>
+                </div>
+            </div>
+
+            <!-- Square: 1 Col, 1 Row (Design) -->
+            <div class="group relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-gray-50 flex items-center justify-center p-10 cursor-pointer hover:bg-white transition-colors duration-500"
+                onclick="window.location.href='explore.html'">
+                <div class="text-center space-y-4">
+                    <img src="./assets/expert_logo.png"
+                        class="h-6 mx-auto opacity-20 group-hover:opacity-100 transition-opacity">
+                    <p
+                        class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 group-hover:text-primary transition-colors">
+                        Design <br> Philosophy</p>
+                </div>
+            </div>
+
+            <!-- Full Width Banner: 4 Cols, 1 Row -->
+            <div class="md:col-span-4 group relative overflow-hidden rounded-[3.5rem] cursor-pointer"
+                onclick="window.location.href='explore.html?cat=women'">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
+                    class="absolute inset-0 w-full h-full object-cover origin-right group-hover:scale-105 transition-transform duration-1000">
+                <div class="absolute inset-y-0 left-16 flex items-center z-20">
+                    <div class="space-y-6 max-w-lg">
+                        <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Season
+                            2026</span>
+                        <h3 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none">
+                            The Noir <br> Collection.</h3>
+                        <div class="flex items-center gap-6">
+                            <span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Limited
+                                Release</span>
+                            <div class="h-[1px] w-20 bg-white/20"></div>
+                            <span
+                                class="text-white text-[10px] font-black uppercase tracking-[0.3em] border-b border-white pb-1 group-hover:text-highlight group-hover:border-highlight transition-all">Explore
+                                Noire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Master Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-24 pb-12">
+        <div class="w-[65%] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+                <div class="col-span-1 md:col-span-1 space-y-8">
+                    <img src="./assets/expert_logo.png" alt="Expert" class="h-8">
+                    <p class="text-gray-400 font-light leading-relaxed">
+                        Curating the world's most sophisticated tech and lifestyle essentials. Quality refined for the
+                        modern era.
+                    </p>
+                    <div class="flex gap-6 text-gray-300">
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">Shop</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li><a href="collection.html" class="hover:text-primary transition-colors">All Collections</a>
+                        </li>
+                        <li><a href="explore.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Gift Cards</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sale Inquiries</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">About</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li><a href="journal.html" class="hover:text-primary transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">Visit Us</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">
+                        Flagship Store <br> 128 Expert Ave, Modern District <br> NY 10001, United States
+                    </p>
+                    <p class="text-primary font-bold text-sm">contact@expert.com</p>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col md:flex-row items-center gap-3 md:gap-6">
+                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em]">
+                        &copy; 2026 EXPERT SERIES
+                    </p>
+                    <div class="hidden md:block w-[1px] h-3 bg-gray-200"></div>
+                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
+                        ENGINEERED BY <span class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
+                    </p>
+                </div>
+                <div class="flex items-center gap-4 grayscale opacity-30">
+                    <i class="fa-brands fa-cc-visa text-2xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                    <i class="fa-brands fa-cc-apple-pay text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./script/cart.js"></script>
+</body>
+
+</html>

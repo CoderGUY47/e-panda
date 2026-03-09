@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Expert | Modern Retail Experience</title>
+    <link rel="icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="shortcut icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="apple-touch-icon" href="./assets/fav-ico.png?v=3.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #111827;
+            --color-secondary: #4B5563;
+            --color-accent: #E5E7EB;
+            --color-highlight: #F59E0B;
+        }
+        * {
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+        ::selection {
+            background-color: #111827;
+            color: #FFFFFF;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(#111827 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        #menu-toggle:checked ~ #mobile-menu {
+            display: flex;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 min-h-screen antialiased">
+    <!-- Sophisticated Header -->
+    <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
+        <div class="w-[65%] mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <img src="./assets/expert_logo.png" alt="Expert Logo"
+                    class="h-9 group-hover:scale-105 transition-transform duration-300">
+            </a>
+
+            <!-- Centered Menu -->
+            <ul
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[14px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                <li><a href="index.html" class="text-primary transition-colors">Home</a></li>
+                <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+            </ul>
+
+            <div class="flex items-center gap-6 shrink-0">
+                <!-- Search & Icons -->
+                <div class="hidden md:flex items-center gap-8 text-gray-600">
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="cart.html" class="hover:text-primary relative group transition-all">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-primary text-white text-[9px] w-4.5 h-4.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform font-bold">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <div class="lg:hidden flex items-center">
+                    <input type="checkbox" id="menu-toggle" class="absolute hidden">
+                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
+                            class="fa-solid fa-bars-staggered"></i></label>
+                    <div id="mobile-menu"
+                        class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
+                        <a href="index.html" class="text-lg font-bold text-primary">Home</a>
+                        <a href="collection.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                        <a href="explore.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                        <a href="journal.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-[65%] mx-auto">
+        <!-- Modern Hero -->
+        <section class="relative bg-gray-50 overflow-hidden">
+            <div class="px-6 py-12 md:py-24 flex flex-col-reverse md:flex-row items-center gap-16">
+                <div class="flex-1 space-y-10 text-center md:text-left">
+                    <div
+                        class="inline-flex items-center gap-2 bg-black/5 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 uppercase tracking-widest">
+                        New In Stock
+                    </div>
+                    <h1 class="text-6xl lg:text-8xl font-bold text-gray-900 leading-[0.9] tracking-tighter">
+                        MI LED TV <br> <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-gray-400">4A PRO
+                            32</span>
+                    </h1>
+                    <p class="text-gray-500 text-lg md:text-xl max-w-lg mx-auto md:mx-0 leading-relaxed font-light">
+                        Experience the perfect harmony of technology and design. Minimalism that redefines the modern
+                        living space.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                        <button
+                            class="w-full sm:w-auto bg-primary text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-gray-800 transition-all shadow-xl shadow-black/10 hover:-translate-y-1">
+                            Explore Now
+                        </button>
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl font-bold">$1,289</span>
+                            <span class="text-gray-400 line-through font-light">$1,499</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 relative group">
+                    <div class="absolute inset-0 bg-highlight/5 rounded-full filter blur-3xl opacity-30 animate-pulse">
+                    </div>
+                    <img src="./assets/hero-tv.png" alt="MI LED TV"
+                        class="relative z-10 w-full h-auto drop-shadow-[0_50px_50px_rgba(0,0,0,0.1)] group-hover:scale-[1.02] transition-transform duration-700">
+                </div>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+                <div class="w-[1px] h-20 bg-gradient-to-b from-primary to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- Minimal Benefits -->
+        <section class="border-b border-gray-100 py-16">
+            <div class="px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div class="space-y-3">
+                    <i class="fa-solid fa-earth-americas text-2xl text-primary"></i>
+                    <h3 class="font-bold uppercase tracking-widest text-xs">Fast Shipping</h3>
+                    <p class="text-gray-400 text-xs">Complimentary worldwide delivery</p>
+                </div>
+                <div class="space-y-3">
+                    <i class="fa-solid fa-shield-halved text-2xl text-primary"></i>
+                    <h3 class="font-bold uppercase tracking-widest text-xs">Secure Checkout</h3>
+                    <p class="text-gray-400 text-xs">100% encryption for every order</p>
+                </div>
+                <div class="space-y-3">
+                    <i class="fa-solid fa-arrow-rotate-left text-2xl text-primary"></i>
+                    <h3 class="font-bold uppercase tracking-widest text-xs">Easy Returns</h3>
+                    <p class="text-gray-400 text-xs">No questions asked within 30 days</p>
+                </div>
+                <div class="space-y-3">
+                    <i class="fa-solid fa-headset text-2xl text-primary"></i>
+                    <h3 class="font-bold uppercase tracking-widest text-xs">24/7 Support</h3>
+                    <p class="text-gray-400 text-xs">Dedicated experts at your service</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Refined Categories -->
+        <section class="py-24">
+            <div class="px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <span class="text-highlight font-bold uppercase tracking-widest text-sm">Curation</span>
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2">Explore Categories</h2>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Men's Clothing -->
+                    <div class="group relative h-[450px] rounded-[3rem] overflow-hidden cursor-pointer" onclick="window.location.href='explore.html?cat=men'">
+                        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=800&auto=format&fit=crop" 
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Men">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="relative h-full flex flex-col justify-end p-10 z-20">
+                            <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.3em] text-white w-fit mb-4">Batch 01</span>
+                            <h3 class="text-3xl font-black text-white tracking-tighter uppercase leading-none">Men's <br> Apparel</h3>
+                            <div class="flex items-center gap-2 mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <span class="text-[9px] font-black text-highlight uppercase tracking-widest">Explore Series</span>
+                                <i class="fa-solid fa-arrow-right text-highlight text-[8px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Women's Clothing -->
+                    <div class="group relative h-[450px] rounded-[3rem] overflow-hidden cursor-pointer" onclick="window.location.href='explore.html?cat=women'">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800&auto=format&fit=crop" 
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Women">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="relative h-full flex flex-col justify-end p-10 z-20">
+                            <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.3em] text-white w-fit mb-4">Exclusive</span>
+                            <h3 class="text-3xl font-black text-white tracking-tighter uppercase leading-none">Women's <br> Selection</h3>
+                            <div class="flex items-center gap-2 mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <span class="text-[9px] font-black text-highlight uppercase tracking-widest">Explore Series</span>
+                                <i class="fa-solid fa-arrow-right text-highlight text-[8px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jewelry -->
+                    <div class="group relative h-[450px] rounded-[3rem] overflow-hidden cursor-pointer" onclick="window.location.href='explore.html?cat=jewelery'">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop" 
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Jewelry">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="relative h-full flex flex-col justify-end p-10 z-20">
+                            <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.3em] text-white w-fit mb-4">Luxury</span>
+                            <h3 class="text-3xl font-black text-white tracking-tighter uppercase leading-none">Jewels <br> & Acc</h3>
+                            <div class="flex items-center gap-2 mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <span class="text-[9px] font-black text-highlight uppercase tracking-widest">Explore Series</span>
+                                <i class="fa-solid fa-arrow-right text-highlight text-[8px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Electronics -->
+                    <div class="group relative h-[450px] rounded-[3rem] overflow-hidden cursor-pointer" onclick="window.location.href='explore.html?cat=electronics'">
+                        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=800&auto=format&fit=crop" 
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Tech">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="relative h-full flex flex-col justify-end p-10 z-20">
+                            <span class="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.3em] text-white w-fit mb-4">Premium</span>
+                            <h3 class="text-3xl font-black text-white tracking-tighter uppercase leading-none">High-End <br> Tech</h3>
+                            <div class="flex items-center gap-2 mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                <span class="text-[9px] font-black text-highlight uppercase tracking-widest">Explore Series</span>
+                                <i class="fa-solid fa-arrow-right text-highlight text-[8px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Products Section -->
+        <section id="products" class="py-24 bg-gray-50/50">
+            <div class="px-6">
+                <div class="flex justify-between items-end mb-16">
+                    <div>
+                        <span class="text-highlight font-bold uppercase tracking-widest text-sm">Automated Fetch</span>
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2">Latest Arrivals</h2>
+                    </div>
+                </div>
+                <!-- Dynamic Product Grid -->
+                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Products injected here -->
+                </div>
+
+                <!-- See More Button -->
+                <div class="mt-20 text-center">
+                    <a href="explore.html"
+                        class="inline-flex items-center gap-3 border-2 border-primary text-primary px-10 py-4 rounded-full font-bold hover:bg-primary hover:text-white transition-all group">
+                        SEE MORE PRODUCTS
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Modern Subscription -->
+        <section class="py-24 bg-white relative overflow-hidden">
+            <div class="px-6">
+                <div class="bg-primary rounded-[3rem] p-8 md:p-12 text-center text-white relative overflow-hidden">
+                    <div class="absolute inset-0 hero-pattern opacity-10"></div>
+                    <div class="max-w-xl mx-auto space-y-4 relative z-10">
+                        <span
+                            class="text-[9px] font-black tracking-[0.6em] text-white/30 uppercase block mb-4">Newsletter
+                            Protocol</span>
+                        <h2 class="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-none">Access the
+                            Elite Selection</h2>
+                        <p class="text-white/40 text-sm font-light px-8">
+                            Register your email to receive exclusive batch updates and member-only pricing metadata.
+                        </p>
+                        <form class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-6" onsubmit="return false;">
+                            <input type="email" placeholder="Registry Email"
+                                class="flex-grow bg-white/5 border border-white/10 rounded-full h-12 px-6 text-sm focus:bg-white focus:text-primary outline-none transition-all placeholder:text-white/20">
+                            <button
+                                class="bg-white text-primary px-8 rounded-full h-12 font-black text-[10px] tracking-widest hover:bg-highlight hover:text-white transition-all shadow-xl">
+                                SUBMIT
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Minimal Modern Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-24 pb-12">
+        <div class="w-[65%] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+                <div class="col-span-1 md:col-span-1 space-y-8">
+                    <img src="./assets/expert_logo.png" alt="Expert" class="h-8">
+                    <p class="text-gray-400 font-light leading-relaxed">
+                        Curating the world's most sophisticated tech and lifestyle essentials. Quality refined for the
+                        modern era.
+                    </p>
+                    <div class="flex gap-6 text-gray-300">
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">Shop</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li><a href="#" class="hover:text-primary transition-colors">All Collections</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Gift Cards</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sale Inquiries</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">About</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li><a href="#" class="hover:text-primary transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-sm uppercase tracking-widest">Visit Us</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">
+                        Flagship Store <br> 128 Expert Ave, Modern District <br> NY 10001, United States
+                    </p>
+                    <p class="text-primary font-bold text-sm">contact@expert.com</p>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col md:flex-row items-center gap-3 md:gap-6">
+                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em]">
+                        &copy; 2026 EXPERT SERIES
+                    </p>
+                    <div class="hidden md:block w-[1px] h-3 bg-gray-200"></div>
+                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
+                        ENGINEERED BY <span class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
+                    </p>
+                </div>
+                <div class="flex items-center gap-4 grayscale opacity-30">
+                    <i class="fa-brands fa-cc-visa text-2xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                    <i class="fa-brands fa-cc-apple-pay text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./script/cart.js"></script>
+    <script src="./script/index.js"></script>
+</body>
+
+</html>
