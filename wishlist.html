@@ -25,6 +25,43 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+        /* MUI Skeleton Loader System */
+        .MuiSkeleton-root {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .MuiSkeleton-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.5),
+                    transparent);
+            animation: MuiSkeleton-keyframes-wave 2.4s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes MuiSkeleton-keyframes-wave {
+            0% { transform: translateX(-100%); }
+            60% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .MuiSkeleton-circle {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+        }
     </style>
 </head>
 
@@ -56,14 +93,31 @@
                         <span
                             class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="user.html" class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></a>
                     <a href="cart.html"
                         class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <div class="lg:hidden flex items-center">
+                    <input type="checkbox" id="menu-toggle" class="absolute hidden">
+                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
+                            class="fa-solid fa-bars-staggered"></i></label>
+                    <div id="mobile-menu"
+                        class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
+                        <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
+                        <a href="collection.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                        <a href="explore.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                        <a href="journal.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,7 +148,7 @@
         </div>
 
         <!-- Wishlist Content -->
-        <div id="wishlist-container" class="hidden space-y-6">
+        <div id="wishlist-container" class="space-y-6">
             <!-- Grid List Header (Desktop Only) -->
             <div
                 class="hidden md:grid grid-cols-12 gap-6 px-10 py-4 border-b border-gray-100 text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">
@@ -105,7 +159,21 @@
 
             <!-- Wishlist Items Grid/List Wrapper -->
             <div id="wishlist-items" class="space-y-4">
-                <!-- Dynamic Items -->
+                <!-- High-Fidelity Skeleton Rows -->
+                <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-32 rounded-2xl opacity-50 flex items-center p-4 gap-8 bg-gray-400/10">
+                    <div class="w-24 h-24 bg-gray-500/10 rounded-xl shrink-0"></div>
+                    <div class="flex-grow space-y-4">
+                        <div class="MuiSkeleton-root w-1/4 h-3"></div>
+                        <div class="MuiSkeleton-root w-1/2 h-6"></div>
+                    </div>
+                </div>
+                <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-32 rounded-2xl opacity-50 flex items-center p-4 gap-8 bg-gray-400/10">
+                    <div class="w-24 h-24 bg-gray-500/10 rounded-xl shrink-0"></div>
+                    <div class="flex-grow space-y-4">
+                        <div class="MuiSkeleton-root w-1/4 h-3"></div>
+                        <div class="MuiSkeleton-root w-1/2 h-6"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- Global Actions -->

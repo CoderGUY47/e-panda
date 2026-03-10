@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Expert | User Protocol Dashboard</title>
+    <link rel="icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #111827;
+            --color-secondary: #4B5563;
+            --color-accent: #E5E7EB;
+            --color-highlight: #F59E0B;
+        }
+        * {
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .technical-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .technical-card:hover {
+            border-color: #F59E0B;
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .sidebar-item-active {
+            background: #111827;
+            color: #FFFFFF;
+        }
+
+        /* MUI Skeleton Loader System */
+        .MuiSkeleton-root {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.14);
+            border-radius: 40px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .MuiSkeleton-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.6),
+                    transparent);
+            animation: MuiSkeleton-keyframes-wave 2.5s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes MuiSkeleton-keyframes-wave {
+            0% { transform: translateX(-100%); }
+            60% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
+        <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <img src="./assets/expert_logo.png" alt="Expert Logo"
+                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
+            </a>
+
+            <!-- Centered Menu -->
+            <ul
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+            </ul>
+
+            <div class="flex items-center gap-6 shrink-0">
+                <!-- Search & Icons -->
+                <div class="hidden md:flex items-center gap-8 text-gray-600">
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <a href="wishlist.html"
+                        class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                        <span
+                            class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
+                    <a href="user.html" class="text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></a>
+                    <a href="cart.html"
+                        class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <div class="lg:hidden flex items-center">
+                    <input type="checkbox" id="menu-toggle" class="absolute hidden">
+                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
+                            class="fa-solid fa-bars-staggered"></i></label>
+                    <div id="mobile-menu"
+                        class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
+                        <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
+                        <a href="collection.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                        <a href="explore.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                        <a href="journal.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="w-[85%] mx-auto py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+            <!-- Sidebar Navigation -->
+            <aside class="lg:col-span-4 xl:col-span-3 space-y-10">
+                <!-- User Profile Intro -->
+                <div class="bg-white rounded-4xl p-4 px-6 border border-gray-100 shadow-2xl space-y-3 text-center">
+                    <div class="relative inline-block group">
+                        <div
+                            class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-highlight transition-all duration-700">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <button
+                            class="absolute bottom-1 right-1 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center border-4 border-white hover:bg-highlight transition-colors">
+                            <i class="fa-solid fa-camera text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 id="display-name" class="text-xl font-black uppercase tracking-tighter">Alex Panda</h3>
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Member Level: Starter
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Easy Navigation -->
+                <nav class="bg-white rounded-[3rem] p-4 border border-gray-100 shadow-2xl overflow-hidden">
+                    <div class="space-y-1">
+                        <a href="user.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] sidebar-item-active group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-table-columns text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">My Dashboard</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <a href="orders.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-receipt text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">My Orders</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <a href="addresses.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-map-location-dot text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">My Addresses</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <a href="security.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-shield-halved text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">Safety & Password</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <div class="pt-4 mt-4 border-t border-gray-50">
+                            <button
+                                class="w-full flex items-center gap-4 p-5 rounded-[2rem] text-rose-500 hover:bg-rose-50 transition-all">
+                                <i class="fa-solid fa-power-off text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">Log Out</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Dashboard Content Area -->
+            <div class="lg:col-span-8 xl:col-span-9 space-y-10">
+
+                <!-- Skeleton Loading State -->
+                <div id="dashboard-skeletons" class="space-y-10">
+                    <!-- HUD Skeletons -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave h-52 rounded-4xl"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave h-52 rounded-4xl"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave h-52 rounded-4xl"></div>
+                    </div>
+                    <!-- Intel Skeleton -->
+                    <div class="bg-white rounded-4xl p-12 border border-gray-100 shadow-2xl space-y-12">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-48 h-10"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-24 rounded-[20px]"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-24 rounded-[20px]"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-24 rounded-[20px]"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-24 rounded-[20px]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actual Protocol Content -->
+                <div id="dashboard-content" class="hidden space-y-10">
+                    <!-- Overview Status -->
+                    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="technical-card p-4 px-6 rounded-4xl shadow-2xl space-y-2 h-52">
+                            <div
+                                class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">Items
+                                    Bought</span>
+                                <div id="items-bought-count" class="text-4xl font-black tracking-tighter">14</div>
+                            </div>
+                            <div
+                                class="text-[10px] text-highlight font-black uppercase tracking-widest border-t border-gray-50 pt-4">
+                                3 packages coming</div>
+                        </div>
+
+                        <div class="technical-card p-4 px-6 rounded-4xl shadow-2xl space-y-2 h-52">
+                            <div
+                                class="w-12 h-12 bg-amber-500/5 rounded-2xl flex items-center justify-center text-amber-500">
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">My
+                                    Level</span>
+                                <div class="text-4xl font-black tracking-tighter uppercase">Gold</div>
+                            </div>
+                            <div
+                                class="text-[10px] text-gray-400 font-bold tracking-widest border-t border-gray-50 pt-4">
+                                Special Member Access</div>
+                        </div>
+
+                        <div class="technical-card p-4 px-6 rounded-4xl shadow-2xl space-y-2 h-52">
+                            <div
+                                class="w-12 h-12 bg-rose-500/5 rounded-2xl flex items-center justify-center text-rose-500">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em]">My
+                                    Balance</span>
+                                <div id="balance-amount" class="text-4xl font-black tracking-tighter">$128</div>
+                            </div>
+                            <div
+                                class="text-[10px] text-gray-300 font-bold tracking-widest border-t border-gray-50 pt-4">
+                                For next shopping</div>
+                        </div>
+                    </section>
+
+                    <section class="bg-white rounded-4xl p-10 border-2 border-white shadow-2xl space-y-4">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-gray-50 pb-4">
+                            <div class="space-y-1">
+                                <h2 class="text-3xl font-black uppercase tracking-tighter text-primary">About Me
+                                </h2>
+                                <p class="text-gray-400 text-xs font-light">Change your basic info here so we know who
+                                    you are.</p>
+                            </div>
+                            <button id="update-info-btn"
+                                class="bg-primary text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[9px] hover:bg-highlight transition-all active:scale-95 shadow-xl">Update
+                                My Info</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">My
+                                    Full Name</label>
+                                <input type="text" id="name-input" value="Alex Panda"
+                                    class="w-full bg-gray-50 border-2 border-primary/20 focus:border-primary/10 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all">
+                            </div>
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">My
+                                    Email Address</label>
+                                <input type="email" id="email-input" value="alex.panda@expert.com"
+                                    class="w-full bg-gray-50 border-2 border-primary/20 focus:border-primary/10 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all">
+                            </div>
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">My
+                                    Password</label>
+                                <div class="relative group">
+                                    <input type="password" id="password-input" value="panda_secret_123"
+                                        class="w-full bg-gray-50 border-2 border-primary/20 focus:border-primary/10 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all pr-14">
+                                    <button id="toggle-password" type="button"
+                                        class="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors focus:outline-none">
+                                        <i class="fa-regular fa-eye text-sm transition-all duration-300"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">My
+                                    Phone Number</label>
+                                <input type="text" id="phone-input" value="+88017-156789"
+                                    class="w-full bg-gray-50 border-2 border-primary/20 focus:border-primary/10 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Activity Log -->
+                    <section class="bg-white rounded-4xl p-12 border border-white shadow-2xl space-y-12">
+                        <div class="space-y-1">
+                            <h3 class="text-2xl font-black uppercase tracking-tighter text-primary">My Recent
+                                History</h3>
+                            <p class="text-gray-400 text-xs font-light">See everything you have bought from our archival
+                                collection.</p>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b-2 border-gray-300/60">
+                                        <th
+                                            class="px-4 pb-6 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                                            Order Number</th>
+                                        <th
+                                            class="px-4 pb-6 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                                            What I Bought</th>
+                                        <th
+                                            class="px-4 pb-6 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                                            Where It Is</th>
+                                        <th
+                                            class="px-4 pb-6 text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                                            Price Paid</th>
+                                        <th
+                                            class="px-4 pb-6 text-right text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                                            Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y-2 divide-gray-300/60">
+                                    <tr class="group transition-colors">
+                                        <td class="p-5">
+                                            <span
+                                                class="font-black uppercase text-[11px] tracking-widest text-primary border-b-2 border-highlight/20 pb-1">EP-8942-X</span>
+                                        </td>
+                                        <td class="p-5">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-highlight transition-colors">
+                                                    <i class="fa-solid fa-microchip text-[10px]"></i>
+                                                </div>
+                                                <span class="text-[11px] font-bold text-gray-600 uppercase">New
+                                                    Electronics</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-5">
+                                            <span
+                                                class="bg-primary text-white px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em]">Coming
+                                                Soon</span>
+                                        </td>
+                                        <td class="p-5">
+                                            <span class="font-black text-primary text-xs">$492.00</span>
+                                        </td>
+                                        <td class="p-5 text-right">
+                                            <button
+                                                class="bg-white px-5 py-2.5 rounded-xl border border-gray-100 font-black uppercase text-[9px] tracking-widest hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm">Track
+                                                Pack</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="group transition-colors">
+                                        <td class="p-5">
+                                            <span
+                                                class="font-black uppercase text-[11px] tracking-widest text-primary border-b-2 border-gray-100 pb-1">EP-7731-S</span>
+                                        </td>
+                                        <td class="p-5">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400 group-hover:text-highlight transition-colors">
+                                                    <i class="fa-solid fa-shirt text-[10px]"></i>
+                                                </div>
+                                                <span
+                                                    class="text-[11px] font-bold text-gray-600 uppercase">Clothes
+                                                    & More</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-5">
+                                            <span
+                                                class="bg-gray-100 text-gray-400 px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em]">At
+                                                My Home</span>
+                                        </td>
+                                        <td class="p-5">
+                                            <span class="font-black text-primary text-xs">$128.00</span>
+                                        </td>
+                                        <td class="p-5 text-right">
+                                            <button
+                                                class="bg-white px-5 py-2.5 rounded-xl border border-gray-100 font-black uppercase text-[9px] tracking-widest hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm">Receipt</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+    </main>
+
+    <!-- Master Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-24 pb-12 mt-20">
+        <div class="w-[85%] mx-auto px-6">
+            <div class="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-300 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 EXPERT SERIES
+                    PROTOCOL</p>
+                <div class="flex items-center gap-8 grayscale opacity-20">
+                    <i class="fa-brands fa-cc-visa text-2xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                    <i class="fa-brands fa-cc-apple-pay text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DaisyUI Modal -->
+    <dialog id="update_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
+            <h3 class="font-black text-2xl uppercase tracking-tighter text-primary">Update Confirmation</h3>
+            <p class="py-4 text-gray-400 text-xs font-light tracking-wide leading-relaxed uppercase">
+                Do You want to save this new information you inputed?
+            </p>
+            <div class="modal-action">
+                <form method="dialog" class="flex gap-4">
+                    <button class="bg-gray-100 text-gray-400 px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-gray-200 transition-all">Abort Sync</button>
+                    <button id="confirm-update-btn" class="bg-primary text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-highlight transition-all shadow-xl active:scale-95">Confirm Protocol</button>
+                </form>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop bg-black/40 backdrop-blur-sm">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <script type="module" src="./script/cart.js"></script>
+    <script src="./script/user.js"></script>
+</body>
+
+</html>

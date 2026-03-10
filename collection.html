@@ -33,6 +33,43 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* MUI Skeleton Loader System */
+        .MuiSkeleton-root {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.14);
+            border-radius: 40px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .MuiSkeleton-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.6),
+                    transparent);
+            animation: MuiSkeleton-keyframes-wave 2.5s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes MuiSkeleton-keyframes-wave {
+            0% { transform: translateX(-100%); }
+            60% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .MuiSkeleton-circle {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+        }
     </style>
 </head>
 
@@ -64,13 +101,13 @@
                         <span
                             class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="user.html" class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></a>
                     <a href="cart.html"
                         class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
                 </div>
 
@@ -83,7 +120,7 @@
                         class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
                         <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
                         <a href="collection.html"
-                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                            class="text-lg font-bold text-primary">Collection</a>
                         <a href="explore.html"
                             class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
                         <a href="journal.html"
@@ -105,93 +142,113 @@
             </p>
         </div>
 
-        <!-- Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
+        <!-- Bento Grid Skeletons (Matching Geometry) -->
+        <div id="bento-skeletons" class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
+            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-2 md:row-span-2 rounded-[3rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-2 rounded-[3rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave rounded-[3rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave rounded-[2.5rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-4 rounded-[3.5rem] h-full"></div>
+        </div>
 
-            <!-- Featured Large: 2 Cols, 2 Rows -->
-            <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
-                onclick="window.location.href='explore.html?cat=electronics'">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=1000&auto=format&fit=crop"
-                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                    alt="Technology Series">
-                <div class="absolute bottom-10 left-10 z-20 space-y-2">
-                    <span class="text-highlight font-black uppercase tracking-widest text-[9px]">Series 01</span>
-                    <h3 class="text-4xl font-black text-white uppercase tracking-tighter leading-none">Technology <br>
-                        Essentials.</h3>
-                    <p
-                        class="text-gray-300 text-sm font-light opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                        Curating the future of digital performance.</p>
-                </div>
-            </div>
-
-            <!-- Wide Medium: 2 Cols, 1 Row -->
-            <div class="md:col-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
-                onclick="window.location.href='explore.html?cat=men'">
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 z-10">
-                </div>
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
-                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                    alt="Lifestyle Collection">
-                <div class="absolute inset-0 flex items-center justify-center z-20">
-                    <div class="text-center group-hover:scale-110 transition-transform duration-500">
-                        <h3 class="text-2xl font-black text-white uppercase tracking-[0.2em]">Lifestyle</h3>
-                        <span class="text-highlight font-bold uppercase text-[10px] tracking-widest">New Arrivals</span>
+        <!-- Bento Grid Actual -->
+        <div id="bento-grid" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
+                <!-- Featured Large: 2 Cols, 2 Rows -->
+                <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                    onclick="window.location.href='explore.html?cat=electronics'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=1000&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                        alt="Technology Series">
+                    <div class="absolute bottom-10 left-10 z-20 space-y-2">
+                        <span class="text-highlight font-black uppercase tracking-widest text-[9px]">Series 01</span>
+                        <h3 class="text-4xl font-black text-white uppercase tracking-tighter leading-none">Technology
+                            <br>
+                            Essentials.</h3>
+                        <p
+                            class="text-gray-300 text-sm font-light opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                            Curating the future of digital performance.</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Square: 1 Col, 1 Row (Audio) -->
-            <div class="group relative overflow-hidden rounded-[3rem] cursor-pointer"
-                onclick="window.location.href='explore.html?cat=electronics'">
-                <div class="absolute inset-0 bg-primary/20 z-10"></div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop"
-                    class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
-                <div class="absolute top-6 left-6 z-20">
-                    <i class="fa-solid fa-headphones text-white text-xl"></i>
+                <!-- Wide Medium: 2 Cols, 1 Row -->
+                <div class="md:col-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                    onclick="window.location.href='explore.html?cat=men'">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 z-10">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                        alt="Lifestyle Collection">
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="text-center group-hover:scale-110 transition-transform duration-500">
+                            <h3 class="text-2xl font-black text-white uppercase tracking-[0.2em]">Lifestyle</h3>
+                            <span class="text-highlight font-bold uppercase text-[10px] tracking-widest">New
+                                Arrivals</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="absolute bottom-6 left-6 z-20">
-                    <h4 class="text-sm font-black text-white uppercase tracking-widest">Audio</h4>
-                </div>
-            </div>
 
-            <!-- Square: 1 Col, 1 Row (Design) -->
-            <div class="group relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-gray-50 flex items-center justify-center p-10 cursor-pointer hover:bg-white transition-colors duration-500"
-                onclick="window.location.href='explore.html'">
-                <div class="text-center space-y-4">
-                    <img src="./assets/expert_logo.png"
-                        class="h-6 mx-auto opacity-20 group-hover:opacity-100 transition-opacity">
-                    <p
-                        class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 group-hover:text-primary transition-colors">
-                        Design <br> Philosophy</p>
+                <!-- Square: 1 Col, 1 Row (Audio) -->
+                <div class="group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                    onclick="window.location.href='explore.html?cat=electronics'">
+                    <div class="absolute inset-0 bg-primary/20 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                    <div class="absolute top-6 left-6 z-20">
+                        <i class="fa-solid fa-headphones text-white text-xl"></i>
+                    </div>
+                    <div class="absolute bottom-6 left-6 z-20">
+                        <h4 class="text-sm font-black text-white uppercase tracking-widest">Audio</h4>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Full Width Banner: 4 Cols, 1 Row -->
-            <div class="md:col-span-4 group relative overflow-hidden rounded-[3.5rem] cursor-pointer"
-                onclick="window.location.href='explore.html?cat=women'">
-                <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
-                    class="absolute inset-0 w-full h-full object-cover origin-right group-hover:cursor-pointer transition-transform duration-1000">
-                <div class="absolute inset-y-0 left-16 flex items-center z-20">
-                    <div class="space-y-6 max-w-lg">
-                        <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Season
-                            2026</span>
-                        <h3 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none">
-                            The Noir <br> Collection.</h3>
-                        <div class="flex items-center gap-6">
-                            <span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Limited
-                                Release</span>
-                            <div class="h-[1px] w-20 bg-white/20"></div>
-                            <span
-                                class="text-white text-[10px] font-black uppercase tracking-[0.3em] border-b border-white pb-1 group-hover:text-highlight group-hover:border-highlight transition-all">Explore
-                                Noire</span>
+                <!-- Square: 1 Col, 1 Row (Design) -->
+                <div class="group relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-gray-50 flex items-center justify-center p-10 cursor-pointer hover:bg-white transition-colors duration-500"
+                    onclick="window.location.href='explore.html'">
+                    <div class="text-center space-y-4">
+                        <img src="./assets/expert_logo.png"
+                            class="h-6 mx-auto opacity-20 group-hover:opacity-100 transition-opacity">
+                        <p
+                            class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 group-hover:text-primary transition-colors">
+                            Design <br> Philosophy</p>
+                    </div>
+                </div>
+
+                <!-- Full Width Banner: 4 Cols, 1 Row -->
+                <div class="md:col-span-4 group relative overflow-hidden rounded-[3.5rem] cursor-pointer"
+                    onclick="window.location.href='explore.html?cat=women'">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover origin-right group-hover:cursor-pointer transition-transform duration-1000">
+                    <div class="absolute inset-y-0 left-16 flex items-center z-20">
+                        <div class="space-y-6 max-w-lg">
+                            <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Season
+                                2026</span>
+                            <h3
+                                class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none">
+                                The Noir <br> Collection.</h3>
+                            <div class="flex items-center gap-6">
+                                <span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Limited
+                                    Release</span>
+                                <div class="h-[1px] w-20 bg-white/20"></div>
+                                <span
+                                    class="text-white text-[10px] font-black uppercase tracking-[0.3em] border-b border-white pb-1 group-hover:text-highlight group-hover:border-highlight transition-all">Explore
+                                    Noire</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(() => {
+                        document.getElementById('bento-skeletons').classList.add('hidden');
+                        document.getElementById('bento-grid').classList.remove('hidden');
+                    }, 2500);
+                });
+            </script>
     </main>
 
     <!-- Master Footer -->

@@ -128,5 +128,46 @@ window.removeItem = removeItem;
 window.clearCart = clearCart;
 window.checkout = checkout;
 
-// Initial render
-document.addEventListener('DOMContentLoaded', renderCart);
+// Initial render with deliberate 5-second sync phase
+document.addEventListener('DOMContentLoaded', () => {
+    const cart = JSON.parse(localStorage.getItem('expert-cart')) || [];
+    const itemsContainer = document.getElementById('cart-items');
+    
+    if (itemsContainer && cart.length > 0) {
+        // Show matching number of High-Fidelity Row Skeletons that match the real item-row design
+        itemsContainer.innerHTML = cart.map(() => `
+            <div class="flex flex-col md:flex-row items-center gap-4 bg-gray-200/50 backdrop-blur-xl p-5 rounded-3xl border-2 border-white shadow-sm relative overflow-hidden h-48">
+                <!-- Image Skimmer -->
+                <div class="w-40 h-40 bg-gray-300/30 rounded-3xl shrink-0 overflow-hidden relative">
+                    <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full m-0 !bg-gray-300/40"></div>
+                </div>
+                
+                <!-- Content Skimmer -->
+                <div class="flex-grow space-y-6 w-full">
+                    <div class="space-y-3">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-3/4 h-8 rounded-xl !bg-gray-300/40"></div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center pt-2">
+                        <div class="flex gap-2">
+                            <div class="MuiSkeleton-root MuiSkeleton-wave w-20 h-8 rounded-xl !bg-gray-300/40"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave w-20 h-8 rounded-xl !bg-gray-300/40"></div>
+                        </div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-10 rounded-xl !bg-gray-300/40"></div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    setTimeout(() => {
+        const sideSkeleton = document.getElementById('checkout-sidebar-skeleton');
+        const sideContent = document.getElementById('checkout-sidebar-content');
+        
+        if (sideSkeleton) sideSkeleton.classList.add('hidden');
+        if (sideContent) sideContent.classList.remove('hidden');
+        
+        renderCart();
+    }, 2500);
+});

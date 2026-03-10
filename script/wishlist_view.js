@@ -99,5 +99,41 @@ window.removeFromWishlist = removeFromWishlist;
 window.moveToCart = moveToCart;
 window.clearWishlist = clearWishlist;
 
-// Initial render
-document.addEventListener("DOMContentLoaded", renderWishlist);
+// Initial render with artificial delay for skeleton visibility
+document.addEventListener("DOMContentLoaded", () => {
+  const wishlist = JSON.parse(localStorage.getItem("expert-wishlist")) || [];
+  const itemsContainer = document.getElementById("wishlist-items");
+
+  if (itemsContainer && wishlist.length > 0) {
+    // Show matching number of High-Fidelity Row Skeletons
+    itemsContainer.innerHTML = wishlist.map(() => `
+        <div class="flex flex-col md:flex-row items-center gap-6 bg-gray-200/50 backdrop-blur-xl p-4 md:p-3 rounded-2xl border-2 border-white shadow-sm relative overflow-hidden h-32">
+            <!-- Image Skimmer -->
+            <div class="w-32 h-24 bg-gray-300/30 rounded-xl shrink-0 overflow-hidden relative">
+                <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full m-0 !bg-gray-300/40"></div>
+            </div>
+            
+            <!-- Content Skimmer -->
+            <div class="flex-grow space-y-4 px-4 w-full">
+                <div class="space-y-2">
+                    <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
+                    <div class="MuiSkeleton-root MuiSkeleton-wave w-3/4 h-6 rounded-lg !bg-gray-300/40"></div>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                    <div class="MuiSkeleton-root MuiSkeleton-wave w-16 h-2 rounded-full !bg-gray-300/40"></div>
+                    <div class="flex gap-4">
+                         <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-10 rounded-xl !bg-gray-300/40"></div>
+                         <div class="MuiSkeleton-root MuiSkeleton-wave w-10 h-10 rounded-xl !bg-gray-300/40"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join("");
+  }
+
+  // We wait 3 seconds before showing actual data
+  setTimeout(() => {
+    renderWishlist();
+  }, 2500);
+});

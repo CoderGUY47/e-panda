@@ -46,6 +46,43 @@
         .pagination-btn:hover:not(.disabled) { border-color: #111827; color: #111827; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .pagination-btn.active { background: #111827; color: white; border-color: #111827; }
         .pagination-btn.disabled { opacity: 0.3; cursor: not-allowed; }
+        /* MUI Skeleton Loader System */
+        .MuiSkeleton-root {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .MuiSkeleton-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.5),
+                    transparent);
+            animation: MuiSkeleton-keyframes-wave 2.4s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes MuiSkeleton-keyframes-wave {
+            0% { transform: translateX(-100%); }
+            60% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .MuiSkeleton-circle {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+        }
     </style>
 </head>
 
@@ -77,13 +114,13 @@
                         <span
                             class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="user.html" class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></a>
                     <a href="cart.html"
                         class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
                 </div>
 
@@ -98,7 +135,7 @@
                         <a href="collection.html"
                             class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
                         <a href="explore.html"
-                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                            class="text-lg font-bold text-primary">Explorer</a>
                         <a href="journal.html"
                             class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
                     </div>
@@ -195,10 +232,65 @@
         </div>
 
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 min-h-[450px]">
-            <!-- Dynamic items -->
-            <div class="col-span-full py-20 text-center">
-                <div class="loading loading-spinner loading-lg text-primary mb-4"></div>
-                <p class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Synchronizing Data...</p>
+            <!-- High-Fidelity Skeletons (Initial Placeholder) -->
+            <div class="group bg-white rounded-[2rem] border border-gray-100 p-5 flex flex-col h-[430px] overflow-hidden opacity-70 animate-pulse relative">
+                <!-- Segment A: Visual Preview -->
+                <div class="relative bg-gray-100 rounded-[1.5rem] m-0 mb-4 h-64 shrink-0 overflow-hidden">
+                    <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full"></div>
+                </div>
+                
+                <!-- Segment B: Technical Content (Split into 2 Divisions) -->
+                <div class="flex-grow flex flex-col justify-between px-2">
+                    <!-- Division 1: Intel -->
+                    <div class="space-y-3">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-1/4 h-2 rounded-full"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-5/6 h-6 rounded-lg"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-2 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Division 2: Settlement -->
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-end pb-2">
+                        <div class="space-y-1">
+                            <div class="MuiSkeleton-root MuiSkeleton-wave w-10 h-1.5 rounded-full"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-8 rounded-lg"></div>
+                        </div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-10 h-10 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Repeated Skeletons for 2nd and 3rd slots -->
+            <div class="group bg-white rounded-[2rem] border border-gray-100 p-5 hidden md:flex flex-col h-[430px] overflow-hidden opacity-70 animate-pulse relative">
+                <div class="relative bg-gray-100 rounded-[1.5rem] h-64 shrink-0 overflow-hidden">
+                     <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full"></div>
+                </div>
+                <div class="flex-grow flex flex-col justify-between px-2 pt-4">
+                    <div class="space-y-3">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-1/4 h-2 rounded-full"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-5/6 h-6 rounded-lg"></div>
+                    </div>
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-end pb-2">
+                        <div class="MuiSkeleton-root w-24 h-8 rounded-lg"></div>
+                        <div class="MuiSkeleton-root w-10 h-10 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-[2rem] border border-gray-100 p-5 hidden md:flex flex-col h-[430px] overflow-hidden opacity-70 animate-pulse relative">
+                <div class="relative bg-gray-100 rounded-[1.5rem] h-64 shrink-0 overflow-hidden">
+                     <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full"></div>
+                </div>
+                <div class="flex-grow flex flex-col justify-between px-2 pt-4">
+                    <div class="space-y-3">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-1/4 h-2 rounded-full"></div>
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-5/6 h-6 rounded-lg"></div>
+                    </div>
+                    <div class="pt-4 border-t border-gray-50 flex justify-between items-end pb-2">
+                        <div class="space-y-1">
+                            <div class="MuiSkeleton-root w-24 h-8 rounded-lg"></div>
+                        </div>
+                        <div class="MuiSkeleton-root w-10 h-10 rounded-full"></div>
+                    </div>
+                </div>
             </div>
         </div>
 

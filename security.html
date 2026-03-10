@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Expert | Safety & Password Protocol</title>
+    <link rel="icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #111827;
+            --color-secondary: #4B5563;
+            --color-accent: #E5E7EB;
+            --color-highlight: #F59E0B;
+        }
+        * {
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .technical-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .technical-card:hover {
+            border-color: #F59E0B;
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .sidebar-item-active {
+            background: #111827;
+            color: #FFFFFF;
+        }
+
+        /* MUI Skeleton Loader System */
+        .MuiSkeleton-root {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.14);
+            border-radius: 40px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .MuiSkeleton-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.6),
+                    transparent);
+            animation: MuiSkeleton-keyframes-wave 2.5s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes MuiSkeleton-keyframes-wave {
+            0% { transform: translateX(-100%); }
+            60% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
+        <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <img src="./assets/expert_logo.png" alt="Expert Logo"
+                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
+            </a>
+
+            <!-- Centered Menu -->
+            <ul
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+            </ul>
+
+            <div class="flex items-center gap-6 shrink-0">
+                <!-- Search & Icons -->
+                <div class="hidden md:flex items-center gap-8 text-gray-600">
+                    <button class="hover:text-primary transition-colors"><i
+                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <a href="wishlist.html"
+                        class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                        <span
+                            class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
+                    <a href="user.html" class="text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></a>
+                    <a href="cart.html"
+                        class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <div class="lg:hidden flex items-center">
+                    <input type="checkbox" id="menu-toggle" class="absolute hidden">
+                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
+                            class="fa-solid fa-bars-staggered"></i></label>
+                    <div id="mobile-menu"
+                        class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
+                        <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
+                        <a href="collection.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Collection</a>
+                        <a href="explore.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Explorer</a>
+                        <a href="journal.html"
+                            class="text-lg font-bold hover:text-primary transition-colors">Journal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="w-[85%] mx-auto py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+            <!-- Sidebar Navigation -->
+            <aside class="lg:col-span-4 xl:col-span-3 space-y-10">
+                <!-- User Profile Intro -->
+                <div class="bg-white rounded-4xl p-4 px-6 border border-gray-100 shadow-2xl space-y-3 text-center">
+                    <div class="relative inline-block group">
+                        <div
+                            class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-highlight transition-all duration-700">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <button
+                            class="absolute bottom-1 right-1 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center border-4 border-white hover:bg-highlight transition-colors">
+                            <i class="fa-solid fa-camera text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 id="display-name" class="text-xl font-black uppercase tracking-tighter">Alex Panda</h3>
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Member Level: Starter
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Easy Navigation -->
+                <nav class="bg-white rounded-[3rem] p-4 border border-gray-100 shadow-2xl overflow-hidden">
+                    <div class="space-y-1">
+                        <a href="user.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-table-columns text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">My Dashboard</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <a href="orders.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-receipt text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">My Orders</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <a href="addresses.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-map-location-dot text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">My Addresses</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <a href="security.html"
+                            class="flex items-center justify-between p-5 rounded-[2rem] sidebar-item-active group transition-all">
+                            <div class="flex items-center gap-4">
+                                <i class="fa-solid fa-shield-halved text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">Safety & Password</span>
+                            </div>
+                            <i
+                                class="fa-solid fa-chevron-right text-[8px] opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        <div class="pt-4 mt-4 border-t border-gray-50">
+                            <button
+                                class="w-full flex items-center gap-4 p-5 rounded-[2rem] text-rose-500 hover:bg-rose-50 transition-all">
+                                <i class="fa-solid fa-power-off text-xs"></i>
+                                <span class="text-[11px] font-black uppercase tracking-widest">Log Out</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Dashboard Content Area -->
+            <div class="lg:col-span-8 xl:col-span-9 space-y-10">
+
+                <!-- Skeleton Loading State -->
+                <div id="dashboard-skeletons" class="space-y-10">
+                    <div class="bg-white rounded-4xl p-12 border border-gray-100 shadow-2xl space-y-12">
+                        <div class="MuiSkeleton-root MuiSkeleton-wave w-48 h-10"></div>
+                        <div class="space-y-10">
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-64 rounded-4xl"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-64 rounded-4xl"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actual Protocol Content -->
+                <div id="dashboard-content" class="hidden space-y-10">
+                    <!-- Password Reset Section -->
+                    <section class="bg-white rounded-4xl p-12 border-2 border-white shadow-2xl space-y-12 group">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-gray-50 pb-8">
+                            <div class="space-y-1">
+                                <h2 class="text-3xl font-black uppercase tracking-tighter text-primary">Identity Shield</h2>
+                                <p class="text-gray-400 text-xs font-light tracking-widest uppercase">Rotate access credentials and enhance session security.</p>
+                            </div>
+                            <i class="fa-solid fa-shield-halved text-4xl text-gray-50 group-hover:text-highlight/20 transition-colors duration-700"></i>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <!-- Current Password -->
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">Current Protocol Code</label>
+                                <div class="relative">
+                                    <input type="password" placeholder="••••••••••••" class="w-full bg-gray-50 border-2 border-primary/5 focus:border-primary/20 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all">
+                                    <i class="fa-solid fa-lock absolute right-6 top-1/2 -translate-y-1/2 text-gray-200 text-xs"></i>
+                                </div>
+                            </div>
+                            <div></div> <!-- Spacer -->
+
+                            <!-- New Password -->
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">New Protocol Code</label>
+                                <input type="password" placeholder="Minimum 12 Characters" class="w-full bg-gray-50 border-2 border-primary/5 focus:border-primary/20 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all">
+                            </div>
+
+                            <!-- Confirm New Password -->
+                            <div class="space-y-4">
+                                <label class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 px-4">Verify New Code</label>
+                                <input type="password" placeholder="Match new code" class="w-full bg-gray-50 border-2 border-primary/5 focus:border-primary/20 rounded-2xl p-6 text-sm font-bold placeholder-gray-300 focus:outline-none focus:bg-white transition-all">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end pt-4">
+                             <button class="bg-primary text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-highlight transition-all active:scale-95 shadow-2xl">Update Access Credentials</button>
+                        </div>
+                    </section>
+
+                    <!-- Advanced Protection -->
+                    <section class="bg-white rounded-4xl p-12 border border-gray-100 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div class="space-y-4 text-center md:text-left">
+                            <div class="flex items-center gap-4 justify-center md:justify-start">
+                                <div class="w-10 h-10 bg-highlight/10 rounded-xl flex items-center justify-center text-highlight"><i class="fa-solid fa-key"></i></div>
+                                <h3 class="text-xl font-black uppercase tracking-tighter">Two-Factor Authentication</h3>
+                            </div>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed max-w-sm uppercase tracking-widest">Enhance your archival security by deploying mobile verification protocols to your primary device.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <input type="checkbox" class="toggle toggle-lg toggle-success" checked>
+                        </div>
+                    </section>
+                </div>
+            </div>
+    </main>
+
+    <!-- Master Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-24 pb-12 mt-20">
+        <div class="w-[85%] mx-auto px-6">
+            <div class="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-300 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 EXPERT SERIES
+                    PROTOCOL</p>
+                <div class="flex items-center gap-8 grayscale opacity-20">
+                    <i class="fa-brands fa-cc-visa text-2xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                    <i class="fa-brands fa-cc-apple-pay text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./script/cart.js"></script>
+    <script src="./script/user.js"></script>
+</body>
+
+</html>

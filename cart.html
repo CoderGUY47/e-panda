@@ -36,6 +36,43 @@
         .item-row:hover .trash-btn { opacity: 1; transform: translateX(0); }
         .trash-btn { opacity: 0; transform: translateX(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+        /* MUI Skeleton Loader System */
+        .MuiSkeleton-root {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .MuiSkeleton-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.5),
+                    transparent);
+            animation: MuiSkeleton-keyframes-wave 2.4s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes MuiSkeleton-keyframes-wave {
+            0% { transform: translateX(-100%); }
+            60% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .MuiSkeleton-circle {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+        }
     </style>
 </head>
 
@@ -67,13 +104,13 @@
                         <span
                             class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-regular fa-user text-sm"></i></button>
+                    <a href="user.html" class="hover:text-primary transition-colors"><i
+                            class="fa-regular fa-user text-sm"></i></a>
                     <a href="cart.html"
-                        class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
+                        class="text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
                     </a>
                 </div>
 
@@ -130,83 +167,147 @@
 
                 <!-- Items Grid -->
                 <div id="cart-items" class="space-y-5">
-                    <!-- Dynamic Items Injected Here -->
+                    <!-- Static High-Fidelity Skeletons -->
+                    <div class="flex flex-col md:flex-row items-center gap-4 bg-gray-200/50 backdrop-blur-xl p-5 rounded-3xl border-2 border-white shadow-sm relative overflow-hidden h-48">
+                        <div class="w-40 h-40 bg-gray-300/30 rounded-3xl shrink-0 overflow-hidden relative">
+                            <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full m-0 !bg-gray-300/40"></div>
+                        </div>
+                        <div class="flex-grow space-y-6 w-full">
+                            <div class="space-y-3">
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-3/4 h-8 rounded-xl !bg-gray-300/40"></div>
+                            </div>
+                            <div class="flex justify-between items-center pt-2">
+                                <div class="flex gap-2">
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-20 h-8 rounded-xl !bg-gray-300/40"></div>
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-20 h-8 rounded-xl !bg-gray-300/40"></div>
+                                </div>
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-10 rounded-xl !bg-gray-300/40"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Right Side: Settlement -->
             <div class="lg:col-span-4">
                 <div class="sticky top-32 space-y-8">
-                    <div
-                        class="bg-gradient-to-tl from-zinc-950 via-gray-800 to-zinc-900 shadow-md text-black p-7 rounded-3xl relative overflow-hidden group">
-                        <div class="relative z-10 space-y-10">
+                    <!-- Order Summary Skeleton -->
+                    <div id="checkout-sidebar-skeleton" class="space-y-8">
+                        <div class="bg-gray-200/50 backdrop-blur-xl p-7 rounded-3xl border-2 border-white shadow-sm space-y-10 relative overflow-hidden h-[450px]">
                             <div class="space-y-6">
-                                <span
-                                    class="text-highlight font-black uppercase tracking-[0.4em] text-[10px] block mb-2">Checkout
-                                    Protocol</span>
-                                <h2 class="text-3xl font-black tracking-tight text-white uppercase leading-none">Order
-                                    <br>
-                                    Summary.</h2>
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-3/4 h-12 rounded-xl !bg-gray-300/40"></div>
                             </div>
-
-                            <div class="space-y-4 border-t border-white/10 pt-8 mt-8">
-                                <div
-                                    class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/80">
-                                    <span>Total-Price</span>
-                                    <span id="gross-total" class="text-white">$0.00</span>
+                            <div class="space-y-4 pt-8 border-t border-gray-100">
+                                <div class="flex justify-between items-center">
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-20 h-2 rounded-full !bg-gray-300/40"></div>
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-12 h-2 rounded-full !bg-gray-300/40"></div>
                                 </div>
-                                <div
-                                    class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/80">
-                                    <span>Shipping</span>
-                                    <span class="text-green-400">Complimentary</span>
-                                </div>
-                                <div
-                                    class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/80">
-                                    <span>Tax Rate</span>
-                                    <span class="text-white">$0.00</span>
+                                <div class="flex justify-between items-center">
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-16 h-2 rounded-full !bg-gray-300/40"></div>
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-20 h-2 rounded-full !bg-gray-300/40"></div>
                                 </div>
                             </div>
-
-                            <div class="pt-8 border-t border-white/20 flex flex-col gap-2">
-                                <span class="text-[9px] font-black uppercase tracking-[0.5em] text-highlight">Final
-                                    Settlement</span>
-                                <div class="flex justify-between items-end">
-                                    <span id="final-total"
-                                        class="text-4xl text-white font-black tracking-tight">$0.00</span>
-                                    <span
-                                        class="text-[8px] font-bold text-white/80 uppercase tracking-widest mb-1">USD</span>
-                                </div>
+                            <div class="pt-8 border-t border-gray-100 space-y-3">
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-1/2 h-8 rounded-xl !bg-gray-300/40"></div>
                             </div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-16 rounded-2xl !bg-gray-300/40"></div>
+                        </div>
 
-                            <button onclick="checkout()"
-                                class="w-full bg-white text-black py-6 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] hover:bg-highlight hover:text-white transition-all transform active:scale-95 shadow-xl">
-                                Complete Transaction
-                            </button>
-
-                            <p class="text-[10px] text-center text-white/60 font-semibold uppercase tracking-widest">
-                                <i class="fa-solid fa-lock text-[7px] mr-1"></i> End-to-End Encryption Enabled
-                            </p>
+                        <!-- Logistics Skeleton -->
+                        <div class="bg-gray-200/50 backdrop-blur-xl p-6 rounded-2xl border-2 border-white shadow-sm space-y-6 relative overflow-hidden">
+                             <div class="flex items-center gap-4">
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-10 h-10 rounded-xl !bg-gray-300/40 m-0"></div>
+                                <div class="space-y-2 flex-grow">
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-32 h-2 rounded-full !bg-gray-300/40"></div>
+                                </div>
+                             </div>
+                             <div class="flex items-center gap-4">
+                                <div class="MuiSkeleton-root MuiSkeleton-wave w-10 h-10 rounded-xl !bg-gray-300/40 m-0"></div>
+                                <div class="space-y-2 flex-grow">
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-28 h-2 rounded-full !bg-gray-300/40"></div>
+                                    <div class="MuiSkeleton-root MuiSkeleton-wave w-36 h-2 rounded-full !bg-gray-300/40"></div>
+                                </div>
+                             </div>
                         </div>
                     </div>
 
-                    <!-- Additional Sidebar Info -->
-                    <div class="bg-black/5 backdrop-blur-xl border-2 border-white p-6 rounded-2xl shadow-2xl space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-primary">
-                                <i class="fa-solid fa-truck-fast text-xs"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-[10px] font-black uppercase tracking-widest">Global Express</h4>
-                                <p class="text-[9px] text-gray-400 font-medium">3-5 Business Days Delivery</p>
+                    <!-- Actual Checkout Content (Hidden during sync) -->
+                    <div id="checkout-sidebar-content" class="hidden space-y-8">
+                        <div
+                            class="bg-gradient-to-tl from-zinc-950 via-gray-800 to-zinc-900 shadow-md text-black p-7 rounded-3xl relative overflow-hidden group">
+                            <div class="relative z-10 space-y-10">
+                                <div class="space-y-6">
+                                    <span
+                                        class="text-highlight font-black uppercase tracking-[0.4em] text-[10px] block mb-2">Checkout
+                                        Protocol</span>
+                                    <h2 class="text-3xl font-black tracking-tight text-white uppercase leading-none">Order
+                                        <br>
+                                        Summary.</h2>
+                                </div>
+
+                                <div class="space-y-4 border-t border-white/10 pt-8 mt-8">
+                                    <div
+                                        class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/80">
+                                        <span>Total-Price</span>
+                                        <span id="gross-total" class="text-white">$0.00</span>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/80">
+                                        <span>Shipping</span>
+                                        <span class="text-green-400">Complimentary</span>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/80">
+                                        <span>Tax Rate</span>
+                                        <span class="text-white">$0.00</span>
+                                    </div>
+                                </div>
+
+                                <div class="pt-8 border-t border-white/20 flex flex-col gap-2">
+                                    <span class="text-[9px] font-black uppercase tracking-[0.5em] text-highlight">Final
+                                        Settlement</span>
+                                    <div class="flex justify-between items-end">
+                                        <span id="final-total"
+                                            class="text-4xl text-white font-black tracking-tight">$0.00</span>
+                                        <span
+                                            class="text-[8px] font-bold text-white/80 uppercase tracking-widest mb-1">USD</span>
+                                    </div>
+                                </div>
+
+                                <button onclick="checkout()"
+                                    class="w-full bg-white text-black py-6 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] hover:bg-highlight hover:text-white transition-all transform active:scale-95 shadow-xl">
+                                    Complete Transaction
+                                </button>
+
+                                <p class="text-[10px] text-center text-white/60 font-semibold uppercase tracking-widest">
+                                    <i class="fa-solid fa-lock text-[7px] mr-1"></i> End-to-End Encryption Enabled
+                                </p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-primary">
-                                <i class="fa-solid fa-shield-halved text-xs"></i>
+
+                        <!-- Additional Sidebar Info -->
+                        <div class="bg-black/5 backdrop-blur-xl border-2 border-white p-6 rounded-2xl shadow-2xl space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-primary">
+                                    <i class="fa-solid fa-truck-fast text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-[10px] font-black uppercase tracking-widest">Global Express</h4>
+                                    <p class="text-[9px] text-gray-400 font-medium">3-5 Business Days Delivery</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-[10px] font-black uppercase tracking-widest">Purchase Guard</h4>
-                                <p class="text-[9px] text-gray-400 font-medium">30-Day Technical Warranty</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-primary">
+                                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-[10px] font-black uppercase tracking-widest">Purchase Guard</h4>
+                                    <p class="text-[9px] text-gray-400 font-medium">30-Day Technical Warranty</p>
+                                </div>
                             </div>
                         </div>
                     </div>
