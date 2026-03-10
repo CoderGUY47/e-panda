@@ -39,15 +39,15 @@
 <body class="bg-white text-gray-900 min-h-screen antialiased">
     <!-- Master Header -->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
-        <div class="w-[65%] mx-auto px-6 py-4 flex justify-between items-center relative">
+        <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
                 <img src="./assets/expert_logo.png" alt="Expert Logo"
-                    class="h-9 group-hover:scale-105 transition-transform duration-300">
+                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
             <!-- Centered Menu -->
             <ul
-                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[14px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
                 <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
                 <li><a href="collection.html" class="text-primary transition-colors">Collection</a></li>
                 <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
@@ -58,12 +58,19 @@
                 <div class="hidden md:flex items-center gap-8 text-gray-600">
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <a href="wishlist.html"
+                        class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                        <span
+                            class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-regular fa-user text-sm"></i></button>
-                    <a href="cart.html" class="hover:text-primary relative group transition-all">
+                    <a href="cart.html"
+                        class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-primary text-white text-[9px] w-4.5 h-4.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
                     </a>
                 </div>
 
@@ -91,8 +98,8 @@
         <!-- Header Section -->
         <div class="space-y-6 animate-fade-in text-center lg:text-left">
             <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Curation Hub</span>
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase">THE ARCHIVE.</h1>
-            <p class="text-gray-400 font-light text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-none uppercase">THE ARCHIVE.</h1>
+            <p class="text-gray-400 font-light text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
                 A meticulously curated selection of modern essentials, filtered for the discerning eye. Explore our
                 specialized chronicles.
             </p>
@@ -165,7 +172,7 @@
                 onclick="window.location.href='explore.html?cat=women'">
                 <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent z-10"></div>
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
-                    class="absolute inset-0 w-full h-full object-cover origin-right group-hover:scale-105 transition-transform duration-1000">
+                    class="absolute inset-0 w-full h-full object-cover origin-right group-hover:cursor-pointer transition-transform duration-1000">
                 <div class="absolute inset-y-0 left-16 flex items-center z-20">
                     <div class="space-y-6 max-w-lg">
                         <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Season
@@ -240,7 +247,8 @@
                     </p>
                     <div class="hidden md:block w-[1px] h-3 bg-gray-200"></div>
                     <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
-                        ENGINEERED BY <span class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
+                        ENGINEERED BY <span
+                            class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
                     </p>
                 </div>
                 <div class="flex items-center gap-4 grayscale opacity-30">

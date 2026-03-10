@@ -24,9 +24,14 @@ fetch('https://fakestoreapi.com/products?limit=6')
                          </span>
                          <span class="text-[8px] font-black uppercase tracking-[0.2em] text-gray-500">${statusLabel}</span>
                     </div>
-                    <div class="absolute top-4 right-4 bg-white/60 backdrop-blur-xl border border-white/20 px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-sm z-10">
-                        <i class="fa-solid fa-star text-highlight text-[8px]"></i>
-                        <span class="text-[9px] font-black text-gray-900">${product.rating.rate}</span>
+                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
+                        <div class="bg-white/60 backdrop-blur-xl border border-white/20 px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-star text-highlight text-[8px]"></i>
+                            <span class="text-[9px] font-black text-gray-900">${product.rating.rate}</span>
+                        </div>
+                        <button onclick='addToWishlist(${productData})' class="w-8 h-8 bg-white/60 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all shadow-sm group/heart">
+                            <i class="fa-regular fa-heart text-[10px] group-hover/heart:scale-125 transition-transform"></i>
+                        </button>
                     </div>
                     <img src="${product.image}" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)">
                     <div class="absolute inset-x-4 bottom-4 transform translate-y-24 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)]">

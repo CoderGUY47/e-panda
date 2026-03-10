@@ -42,15 +42,15 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen antialiased flex flex-col">
     <!-- Master Header -->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
-        <div class="w-[65%] mx-auto px-6 py-4 flex justify-between items-center relative">
+        <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
                 <img src="./assets/expert_logo.png" alt="Expert Logo"
-                    class="h-9 group-hover:scale-105 transition-transform duration-300">
+                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
             <!-- Centered Menu -->
             <ul
-                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[14px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
                 <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
                 <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
                 <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
@@ -61,12 +61,19 @@
                 <div class="hidden md:flex items-center gap-8 text-gray-600">
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <a href="wishlist.html"
+                        class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                        <span
+                            class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-regular fa-user text-sm"></i></button>
-                    <a href="cart.html" class="text-primary relative group transition-all">
+                    <a href="cart.html"
+                        class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-primary text-white text-[9px] w-4.5 h-4.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
                     </a>
                 </div>
 
@@ -130,12 +137,15 @@
             <!-- Right Side: Settlement -->
             <div class="lg:col-span-4">
                 <div class="sticky top-32 space-y-8">
-                    <div class="bg-gradient-to-tl from-zinc-950 via-gray-800 to-zinc-900 shadow-md text-black p-7 rounded-3xl relative overflow-hidden group">
+                    <div
+                        class="bg-gradient-to-tl from-zinc-950 via-gray-800 to-zinc-900 shadow-md text-black p-7 rounded-3xl relative overflow-hidden group">
                         <div class="relative z-10 space-y-10">
                             <div class="space-y-6">
-                                <span class="text-highlight font-black uppercase tracking-[0.4em] text-[10px] block mb-2">Checkout
+                                <span
+                                    class="text-highlight font-black uppercase tracking-[0.4em] text-[10px] block mb-2">Checkout
                                     Protocol</span>
-                                <h2 class="text-3xl font-black tracking-tight text-white uppercase leading-none">Order <br>
+                                <h2 class="text-3xl font-black tracking-tight text-white uppercase leading-none">Order
+                                    <br>
                                     Summary.</h2>
                             </div>
 
@@ -161,7 +171,8 @@
                                 <span class="text-[9px] font-black uppercase tracking-[0.5em] text-highlight">Final
                                     Settlement</span>
                                 <div class="flex justify-between items-end">
-                                    <span id="final-total" class="text-4xl text-white font-black tracking-tight">$0.00</span>
+                                    <span id="final-total"
+                                        class="text-4xl text-white font-black tracking-tight">$0.00</span>
                                     <span
                                         class="text-[8px] font-bold text-white/80 uppercase tracking-widest mb-1">USD</span>
                                 </div>
@@ -204,31 +215,25 @@
         </div>
 
         <!-- Empty State Redesign -->
-        <div id="empty-cart" class="hidden py-48 text-center max-w-xl mx-auto space-y-12">
+        <div id="empty-cart" class="hidden py-10 text-center max-w-xl mx-auto space-y-12">
             <div class="relative inline-block">
                 <div
-                    class="w-40 h-40 bg-gray-50 rounded-full flex items-center justify-center mx-auto relative z-10 border border-gray-100 shadow-inner">
-                    <i class="fa-solid fa-box-archive text-gray-200 text-6xl"></i>
+                    class="w-40 h-40 bg-gray-50 rounded-full flex items-center justify-center mx-auto relative z-10 border-2 border-gray-500 shadow-inner animate-pulse">
+                    <i class="fa-solid fa-box-archive text-gray-500 text-6xl"></i>
                 </div>
                 <div class="absolute -top-4 -right-4 w-20 h-20 bg-highlight/5 rounded-full blur-2xl animate-pulse">
                 </div>
             </div>
             <div class="space-y-6">
-                <div class="flex items-center justify-center gap-3">
-                    <span class="w-8 h-[1px] bg-gray-200"></span>
-                    <span class="text-gray-400 font-black uppercase tracking-[0.5em] text-[9px]">Null Buffer</span>
-                    <span class="w-8 h-[1px] bg-gray-200"></span>
-                </div>
-                <h2 class="text-5xl font-black tracking-tighter uppercase leading-none">Archive is <br> Vacant.</h2>
-                <p class="text-gray-400 font-light text-lg max-w-md mx-auto">
-                    Your current session metadata contains no product acquisitions. Explore our elite collections to
+                <h2 class="text-5xl font-black tracking-tight uppercase leading-none">Cart is Empty.</h2>
+                <p class="text-gray-400 font-light text-md max-w-md mx-auto">
+                    Your cart contains no product. Explore our elite collections to
                     populate the archive.
                 </p>
             </div>
             <a href="explore.html"
                 class="inline-flex items-center gap-4 bg-primary text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-highlight hover:shadow-2xl hover:shadow-highlight/20 transition-all duration-500 group">
-                Populate Archive
-                <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
+                Go to Explore<i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
             </a>
         </div>
     </main>

@@ -20,7 +20,7 @@ function renderCart() {
     cart.forEach(item => {
         total += item.price * item.quantity;
         const row = document.createElement('div');
-        row.className = 'item-row group flex flex-col md:flex-row items-center gap-10 bg-gray-400/10 backdrop-blur-xl p-7 rounded-3xl border-2 border-white shadow-[5px_3px_25px_5px_rgba(0,0,0,0.15)] transition-all duration-500 relative overflow-hidden';
+        row.className = 'item-row group flex flex-col md:flex-row items-center gap-4 bg-gray-400/10 backdrop-blur-xl p-5 rounded-3xl border-2 border-white shadow-[5px_3px_25_5px_rgba(0,0,0,0.15)] transition-all duration-500 relative overflow-hidden';
         row.innerHTML = `
             <div class="absolute top-0 left-0 w-1.5 h-full bg-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500"></div>
             
@@ -42,34 +42,36 @@ function renderCart() {
                         <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">REF: PRD-${item.id}X</span>
                         <span class="px-2 py-0.5 bg-green-50 text-green-500 rounded text-[7px] font-black uppercase tracking-widest ml-auto">Verified Stock</span>
                     </div>
-                    <h3 class="font-black text-2xl tracking-tighter uppercase leading-none group-hover:text-primary transition-colors">${item.title}</h3>
+                    <h3 class="font-black text-lg tracking-tight leading-none group-hover:text-primary transition-colors line-clamp-3 mt-6">${item.title}</h3>
                 </div>
 
-                <div class="flex items-center gap-8">
-                    <div class="flex items-center gap-4/20 p-1.5 rounded-xl border-0">
-                        <button onclick="updateQuantity(${item.id}, -1)" class="w-10 h-10 flex items-center justify-center rounded-full bg-black/70 hover:text-white hover:bg-black transition-all text-white">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center p-1.5 rounded-xl border-0">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 flex items-center justify-center rounded-full bg-black/70 hover:text-white hover:bg-black transition-all text-white active:scale-95">
                             <i class="fa-solid fa-minus text-sm"></i>
                         </button>
                         <span class="text-[10px] font-black min-w-[30px] text-center tracking-tighter">${item.quantity}</span>
-                        <button onclick="updateQuantity(${item.id}, 1)" class="w-10 h-10 flex items-center justify-center rounded-full text-white bg-black/70 hover:text-white hover:bg-black transition-all">
+                        <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 flex items-center justify-center rounded-full text-white bg-black/70 hover:text-white hover:bg-black transition-all active:scale-95">
                             <i class="fa-solid fa-plus text-sm"></i>
                         </button>
                     </div>
                     
-                    <button onclick="removeItem(${item.id})" class="text-[8px] font-black uppercase tracking-widest text-gray-500 hover:text-red-500 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-circle-xmark text-sm"></i> Wipe Entry
-                    </button>
+                    <div class="flex items-center gap-6">
+                        <button onclick='addToWishlist(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="text-[8px] font-black uppercase tracking-widest text-gray-500 hover:text-red-500 transition-colors flex items-center gap-2 group/wish">
+                            <i class="fa-regular fa-heart text-sm"></i> Archive
+                        </button>
+                        <button onclick="removeItem(${item.id})" class="text-[8px] font-black uppercase tracking-widest text-gray-400 hover:text-red-600 transition-colors flex items-center gap-2 group/wipe">
+                            <i class="fa-solid fa-trash text-sm"></i> Remove
+                        </button>
+                    </div>
 
                     <!-- Price Settlement -->
-                    <div class="text-right flex flex-col items-end justify-between self-stretch shrink-0 py-2">
-                        <div class="space-y-1">
-                            <span class="text-3xl font-black tracking-tighter">$${(item.price * item.quantity).toFixed(2)}</span>
-                        </div>
+                    <div class="text-right flex flex-col items-end justify-between self-stretch shrink-0 py-2 ml-auto">
+                        <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest">Price</span>
+                        <span class="text-lg font-black tracking-tighter">$${(item.price * item.quantity).toFixed(2)}</span>
                     </div>
                 </div>
             </div>
-
-
         `;
         itemsContainer.appendChild(row);
     });
@@ -90,7 +92,6 @@ function updateQuantity(id, delta) {
         }
         localStorage.setItem('expert-cart', JSON.stringify(cart));
         renderCart();
-        // Update cart count in header if window.updateCartCount exists
         if (typeof window.updateCartCount === 'function') {
             window.updateCartCount();
         }

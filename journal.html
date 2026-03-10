@@ -42,12 +42,12 @@
         <div class="w-[65%] mx-auto px-6 py-4 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
                 <img src="./assets/expert_logo.png" alt="Expert Logo"
-                    class="h-9 group-hover:scale-105 transition-transform duration-300">
+                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
             <!-- Centered Menu -->
             <ul
-                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[14px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
                 <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
                 <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
                 <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
@@ -58,12 +58,19 @@
                 <div class="hidden md:flex items-center gap-8 text-gray-600">
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <a href="wishlist.html"
+                        class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
+                        <i class="fa-regular fa-heart text-sm"></i>
+                        <span
+                            class="wishlist-count absolute -top-2.5 -right-2.5 bg-amber-500 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold hidden">0</span>
+                    </a>
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-regular fa-user text-sm"></i></button>
-                    <a href="cart.html" class="hover:text-primary relative group transition-all">
+                    <a href="cart.html"
+                        class="hover:text-primary relative group transition-all inline-flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping text-sm"></i>
                         <span
-                            class="cart-count absolute -top-2.5 -right-2.5 bg-primary text-white text-[9px] w-4.5 h-4.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform font-bold">0</span>
+                            class="cart-count absolute -top-2.5 -right-2.5 bg-rose-500/80 text-white text-[9px] px-1.5 py-1.5 min-w-[16px] h-[16px] items-center justify-center rounded-full border-0 transition-all font-bold">0</span>
                     </a>
                 </div>
 
@@ -87,26 +94,26 @@
         </div>
     </header>
 
-    <main class="w-[65%] mx-auto py-24 space-y-32">
+    <main class="w-[65%] mx-auto py-14 space-y-10">
         <!-- Hero Section -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end">
-            <div class="space-y-8 animate-fade-in">
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+            <div class="space-y-2 animate-fade-in">
                 <div class="flex items-center gap-4">
                     <span class="w-12 h-[1px] bg-highlight"></span>
                     <span class="text-highlight font-black uppercase tracking-[0.4em] text-[10px]">Lifestyle
                         Editorial</span>
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase">The <br> Journal.
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-[0.9] uppercase">The Journal.
                 </h1>
-                <p class="text-gray-400 font-light text-xl leading-relaxed max-w-md">
+                <p class="text-gray-400 font-light text-lg leading-relaxed max-w-md">
                     Curated thoughts on the intersection of modern tech, luxury minimalism, and human-centric design.
                 </p>
             </div>
-            <div class="relative group overflow-hidden rounded-[2.5rem]">
-                <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-700 z-10">
+            <div class="relative group overflow-hidden rounded-3xl">
+                <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-500 z-10">
                 </div>
                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop"
-                    class="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+                    class="w-full aspect-[16/9] object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
                     alt="Minimalist Design Studio">
             </div>
         </section>
@@ -122,7 +129,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div class="lg:col-span-7 overflow-hidden rounded-[3rem] shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-                            class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-1000"
+                            class="w-full aspect-[16/10] object-cover group-hover:cursor-pointer transition-transform duration-1000"
                             alt="Luxury Retail Concept">
                     </div>
                     <div class="lg:col-span-5 space-y-8 pl-0 lg:pl-10">
@@ -286,7 +293,8 @@
                     </p>
                     <div class="hidden md:block w-[1px] h-3 bg-gray-200"></div>
                     <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
-                        ENGINEERED BY <span class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
+                        ENGINEERED BY <span
+                            class="text-primary hover:text-highlight transition-all cursor-pointer border-b border-gray-100 hover:border-highlight">S.M.HASAN</span>
                     </p>
                 </div>
                 <div class="flex items-center gap-4 grayscale opacity-30">
