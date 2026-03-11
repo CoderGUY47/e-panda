@@ -111,9 +111,11 @@
             </ul>
 
             <div class="flex items-center gap-6 shrink-0">
-                <div class="hidden md:flex items-center gap-8 text-gray-600">
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                <div class="hidden lg:flex items-center gap-8 text-gray-600">
+                    <div class="relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i>
+                        <input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-32 lg:w-40">
+                    </div>
                     <a href="wishlist.html"
                         class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
                         <i class="fa-regular fa-heart text-sm"></i>
@@ -133,7 +135,7 @@
                 <!--mobile button-->
                 <div class="lg:hidden flex items-center gap-2">
                     <div class="flex items-center gap-4 text-gray-600 mr-2">
-                        <div class="relative flex items-center"><i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i><input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-48 lg:w-48"></div>
+                        <button onclick="openSearchModal()" class="hover:text-primary transition-colors"><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
                         <a href="wishlist.html" class="hover:text-primary transition-colors relative inline-flex items-center justify-center">
                             <i class="fa-regular fa-heart text-sm"></i>
                             <span class="wishlist-count absolute -top-2 -right-2 bg-amber-500 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
@@ -168,9 +170,9 @@
             <!-- Left Side: Items List -->
             <div class="lg:col-span-8 space-y-16">
                 <div
-                    class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-gray-100 pb-12">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
+                    class="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 border-b border-gray-100 pb-12">
+                    <div class="space-y-4 text-center md:text-left">
+                        <div class="flex items-center justify-center md:justify-start gap-4">
                             <span class="w-12 h-[1px] bg-highlight"></span>
                             <span class="text-highlight font-black uppercase tracking-[0.5em] text-[10px]">Session
                                 Archive</span>
@@ -197,8 +199,8 @@
                 <!-- Items Grid -->
                 <div id="cart-items" class="space-y-5">
                     <!-- Static High-Fidelity Skeletons -->
-                    <div class="flex flex-col md:flex-row items-center gap-4 bg-gray-200/50 backdrop-blur-xl p-5 rounded-3xl border-2 border-white shadow-sm relative overflow-hidden h-48">
-                        <div class="w-40 h-40 bg-gray-300/30 rounded-3xl shrink-0 overflow-hidden relative">
+                    <div class="flex flex-col md:flex-row items-center gap-4 bg-gray-200/50 backdrop-blur-xl p-5 rounded-2xl md:rounded-3xl border-2 border-white shadow-sm relative overflow-hidden h-48">
+                        <div class="w-40 h-40 bg-gray-300/30 rounded-2xl md:rounded-3xl shrink-0 overflow-hidden relative">
                             <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full m-0 !bg-gray-300/40"></div>
                         </div>
                         <div class="flex-grow space-y-6 w-full">
@@ -223,7 +225,7 @@
                 <div class="sticky top-32 space-y-8">
                     <!-- Order Summary Skeleton -->
                     <div id="checkout-sidebar-skeleton" class="space-y-8">
-                        <div class="bg-gray-200/50 backdrop-blur-xl p-7 rounded-3xl border-2 border-white shadow-sm space-y-10 relative overflow-hidden h-[450px]">
+                        <div class="bg-gray-200/50 backdrop-blur-xl p-7 rounded-2xl md:rounded-3xl border-2 border-white shadow-sm space-y-10 relative overflow-hidden h-[450px]">
                             <div class="space-y-6">
                                 <div class="MuiSkeleton-root MuiSkeleton-wave w-24 h-2 rounded-full !bg-gray-300/40"></div>
                                 <div class="MuiSkeleton-root MuiSkeleton-wave w-3/4 h-12 rounded-xl !bg-gray-300/40"></div>
@@ -267,7 +269,7 @@
                     <!-- Actual Checkout Content (Hidden during sync) -->
                     <div id="checkout-sidebar-content" class="hidden space-y-8">
                         <div
-                            class="bg-gradient-to-tl from-zinc-950 via-gray-800 to-zinc-900 shadow-md text-black p-7 rounded-3xl relative overflow-hidden group">
+                            class="bg-gradient-to-tl from-zinc-950 via-gray-800 to-zinc-900 shadow-md text-black p-7 rounded-2xl md:rounded-3xl relative overflow-hidden group">
                             <div class="relative z-10 space-y-10">
                                 <div class="space-y-6">
                                     <span
@@ -434,6 +436,7 @@
         </div>
     </footer>
     <script type="module" src="./script/cart.js"></script>
+    <script src="./script/search.js"></script>
     <script src="./script/cart_view.js"></script>
 </body>
 

@@ -46,8 +46,8 @@ function renderBanner() {
             <img src="${item.image}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             
-            <div class="relative h-full flex flex-col justify-between p-4 md:p-6 z-20">
-                <div class="flex justify-between items-start">
+            <div class="relative h-full flex flex-col justify-between p-8 md:p-12 z-20 text-center md:text-left items-center md:items-start">
+                <div class="flex flex-col md:flex-row justify-between items-center md:items-start w-full gap-4">
                     <span class="bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-white">
                         ${item.category}
                     </span>
@@ -58,13 +58,13 @@ function renderBanner() {
                     </span>
                 </div>
                 
-                <div class="space-y-4">
-                    <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none max-w-[250px]">
+                <div class="space-y-4 flex flex-col items-center md:items-start">
+                    <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none max-w-sm">
                         ${item.title}
                     </h3>
                     <div class="flex items-center gap-3 opacity-100 md:opacity-0 group-hover:opacity-100 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                         <span class="text-[10px] font-black text-highlight uppercase tracking-[0.3em]">Redeem Offer</span>
-                        <div class="w-8 h-[1px] bg-highlight"></div>
+                        <div class="w-8 h-[1px] bg-highlight hidden md:block"></div>
                         <i class="fa-solid fa-arrow-right text-highlight text-xs"></i>
                     </div>
                 </div>

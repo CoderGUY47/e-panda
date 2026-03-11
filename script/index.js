@@ -49,16 +49,16 @@ let renderGridProducts = (productList) => {
             </div>
 
             <!-- info part -->
-            <div class="flex-grow flex flex-col justify-between px-6 py-4">
+            <div class="flex-grow flex flex-col justify-between px-6 py-4 text-center md:text-left items-center md:items-start">
                 <!-- section 1: product info -->
-                <div class="space-y-1">
+                <div class="space-y-1 flex flex-col items-center md:items-start w-full">
                     <p class="text-[8px] font-black text-highlight uppercase tracking-[0.3em]">${product.category}</p>
-                    <h3 class="text-lg font-bold text-gray-900 truncate group-hover:text-primary transition-colors tracking-tight leading-tight">${product.title}</h3>
+                    <h3 class="text-lg font-bold text-gray-900 truncate group-hover:text-primary transition-colors tracking-tight leading-tight w-full">${product.title}</h3>
                     <p class="text-[10px] text-gray-400 line-clamp-2 font-medium pt-2">Refined for the modern era. Curated with precision for high-end lifestyle performance.</p>
                 </div>
 
                 <!-- section 2: price and value -->
-                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3 w-full">
                     <div class="flex flex-col">
                         <span class="text-[7px] font-bold text-gray-300 uppercase tracking-widest">Metadata Price</span>
                         <span class="text-xl font-black text-primary tracking-tighter">$${Math.floor(product.price)}.00</span>

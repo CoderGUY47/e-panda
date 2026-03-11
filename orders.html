@@ -121,9 +121,11 @@
 
             <div class="flex items-center gap-6 shrink-0">
                 <!-- Search & Icons -->
-                <div class="hidden md:flex items-center gap-8 text-gray-600">
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                <div class="hidden lg:flex items-center gap-8 text-gray-600">
+                    <div class="relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i>
+                        <input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-32 lg:w-40">
+                    </div>
                     <a href="wishlist.html"
                         class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
                         <i class="fa-regular fa-heart text-sm"></i>
@@ -143,7 +145,7 @@
                 <!-- Mobile Trigger -->
                 <div class="lg:hidden flex items-center gap-2">
                     <div class="flex items-center gap-4 text-gray-600 mr-2">
-                        <div class="relative flex items-center"><i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i><input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-48 lg:w-48"></div>
+                        <button onclick="openSearchModal()" class="hover:text-primary transition-colors"><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
                         <a href="wishlist.html" class="hover:text-primary transition-colors relative inline-flex items-center justify-center">
                             <i class="fa-regular fa-heart text-sm"></i>
                             <span class="wishlist-count absolute -top-2 -right-2 bg-amber-500 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
@@ -180,7 +182,7 @@
             <!-- Sidebar Navigation -->
             <aside class="lg:col-span-4 xl:col-span-3 space-y-10">
                 <!-- User Profile Intro -->
-                <div class="bg-white rounded-4xl p-4 px-6 border border-gray-100 shadow-2xl space-y-3 text-center">
+                <div class="bg-white rounded-2xl md:rounded-4xl p-4 px-6 border border-gray-100 shadow-2xl space-y-3 text-center">
                     <div class="relative inline-block group">
                         <div
                             class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-highlight transition-all duration-700">
@@ -200,10 +202,10 @@
                 </div>
 
                 <!-- Easy Navigation -->
-                <nav class="bg-white rounded-[3rem] p-4 border border-gray-100 shadow-2xl overflow-hidden">
+                <nav class="bg-white rounded-2xl md:rounded-[3rem] p-4 border border-gray-100 shadow-2xl overflow-hidden">
                     <div class="space-y-1">
                         <a href="user.html"
-                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            class="flex items-center justify-between p-5 rounded-2xl md:rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
                             <div class="flex items-center gap-4">
                                 <i class="fa-solid fa-table-columns text-xs"></i>
                                 <span class="text-[11px] font-black uppercase tracking-widest">My Dashboard</span>
@@ -212,7 +214,7 @@
                                 class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
                         </a>
                         <a href="orders.html"
-                            class="flex items-center justify-between p-5 rounded-[2rem] sidebar-item-active group transition-all">
+                            class="flex items-center justify-between p-5 rounded-2xl md:rounded-[2rem] sidebar-item-active group transition-all">
                             <div class="flex items-center gap-4">
                                 <i class="fa-solid fa-receipt text-xs"></i>
                                 <span class="text-[11px] font-black uppercase tracking-widest">My Orders</span>
@@ -221,7 +223,7 @@
                                 class="fa-solid fa-chevron-right text-[8px] opacity-20 group-hover:opacity-100 transition-opacity"></i>
                         </a>
                         <a href="addresses.html"
-                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            class="flex items-center justify-between p-5 rounded-2xl md:rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
                             <div class="flex items-center gap-4">
                                 <i class="fa-solid fa-map-location-dot text-xs"></i>
                                 <span class="text-[11px] font-black uppercase tracking-widest">My Addresses</span>
@@ -230,7 +232,7 @@
                                 class="fa-solid fa-chevron-right text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
                         </a>
                         <a href="security.html"
-                            class="flex items-center justify-between p-5 rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
+                            class="flex items-center justify-between p-5 rounded-2xl md:rounded-[2rem] text-gray-400 hover:bg-gray-50 hover:text-primary group transition-all">
                             <div class="flex items-center gap-4">
                                 <i class="fa-solid fa-shield-halved text-xs"></i>
                                 <span class="text-[11px] font-black uppercase tracking-widest">Safety & Password</span>
@@ -240,7 +242,7 @@
                         </a>
                         <div class="pt-4 mt-4 border-t border-gray-50">
                             <button
-                                class="w-full flex items-center gap-4 p-5 rounded-[2rem] text-rose-500 hover:bg-rose-50 transition-all">
+                                class="w-full flex items-center gap-4 p-5 rounded-2xl md:rounded-[2rem] text-rose-500 hover:bg-rose-50 transition-all">
                                 <i class="fa-solid fa-power-off text-xs"></i>
                                 <span class="text-[11px] font-black uppercase tracking-widest">Log Out</span>
                             </button>
@@ -254,20 +256,20 @@
 
                 <!-- Skeleton Loading State -->
                 <div id="dashboard-skeletons" class="space-y-10">
-                    <div class="bg-white rounded-4xl p-12 border border-gray-100 shadow-2xl space-y-12">
+                    <div class="bg-white rounded-2xl md:rounded-4xl p-12 border border-gray-100 shadow-2xl space-y-12">
                         <div class="MuiSkeleton-root MuiSkeleton-wave w-48 h-10"></div>
                         <div class="space-y-6">
-                            <div class="MuiSkeleton-root MuiSkeleton-wave h-32 rounded-3xl"></div>
-                            <div class="MuiSkeleton-root MuiSkeleton-wave h-32 rounded-3xl"></div>
-                            <div class="MuiSkeleton-root MuiSkeleton-wave h-32 rounded-3xl"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-32 rounded-2xl md:rounded-3xl"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-32 rounded-2xl md:rounded-3xl"></div>
+                            <div class="MuiSkeleton-root MuiSkeleton-wave h-32 rounded-2xl md:rounded-3xl"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Actual Protocol Content -->
                 <div id="dashboard-content" class="hidden space-y-10">
-                    <section class="bg-white rounded-4xl p-10 border-2 border-white shadow-2xl space-y-12">
-                        <div class="space-y-1 border-b border-gray-50 pb-6">
+                    <section class="bg-white rounded-2xl md:rounded-4xl p-10 border-2 border-white shadow-2xl space-y-12">
+                        <div class="space-y-1 border-b border-gray-50 pb-6 text-center md:text-left">
                             <h2 class="text-3xl font-black uppercase tracking-tighter text-primary">My Orders</h2>
                             <p class="text-gray-400 text-xs font-light tracking-widest uppercase">A list of all your past orders.</p>
                         </div>
@@ -275,7 +277,7 @@
                         <!-- Orders Grid -->
                         <div class="space-y-6">
                             <!-- Order Entry 01 -->
-                            <div class="technical-card p-4 md:p-8 rounded-4xl flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 group">
+                            <div class="technical-card p-4 md:p-8 rounded-2xl md:rounded-4xl flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 group">
                                 <div class="flex items-center gap-4 md:gap-8 w-full md:w-auto">
                                     <div class="w-12 h-12 md:w-16 md:h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 max-lg:scale-110 transition-transform duration-500">
                                         <i class="fa-solid fa-microchip text-lg md:text-xl"></i>
@@ -299,7 +301,7 @@
                             </div>
 
                             <!-- Order Entry 02 -->
-                            <div class="technical-card p-4 md:p-8 rounded-4xl flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 group">
+                            <div class="technical-card p-4 md:p-8 rounded-2xl md:rounded-4xl flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 group">
                                 <div class="flex items-center gap-4 md:gap-8 w-full md:w-auto">
                                     <div class="w-12 h-12 md:w-16 md:h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 max-lg:scale-110 transition-transform duration-500">
                                         <i class="fa-solid fa-shirt text-lg md:text-xl"></i>
@@ -342,6 +344,7 @@
     </footer>
 
     <script type="module" src="./script/cart.js"></script>
+    <script src="./script/search.js"></script>
     <script src="./script/user.js"></script>
 </body>
 

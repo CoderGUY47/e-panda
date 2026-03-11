@@ -108,9 +108,11 @@
             </ul>
 
             <div class="flex items-center gap-6 shrink-0">
-                <div class="hidden md:flex items-center gap-8 text-gray-600">
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                <div class="hidden lg:flex items-center gap-8 text-gray-600">
+                    <div class="relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i>
+                        <input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-32 lg:w-40">
+                    </div>
                     <a href="wishlist.html"
                         class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
                         <i class="fa-regular fa-heart text-sm"></i>
@@ -130,7 +132,7 @@
                 <!-- Mobile Trigger -->
                 <div class="lg:hidden flex items-center gap-2">
                     <div class="flex items-center gap-4 text-gray-600 mr-2">
-                        <div class="relative flex items-center"><i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i><input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-48 lg:w-48"></div>
+                        <button onclick="openSearchModal()" class="hover:text-primary transition-colors"><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
                         <a href="wishlist.html" class="hover:text-primary transition-colors relative inline-flex items-center justify-center">
                             <i class="fa-regular fa-heart text-sm"></i>
                             <span class="wishlist-count absolute -top-2 -right-2 bg-amber-500 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
@@ -173,18 +175,18 @@
 
         <!-- Bento Grid Skeletons (Matching Geometry) -->
         <div id="bento-skeletons" class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
-            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-2 md:row-span-2 rounded-[3rem] h-full"></div>
-            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-2 rounded-[3rem] h-full"></div>
-            <div class="MuiSkeleton-root MuiSkeleton-wave rounded-[3rem] h-full"></div>
-            <div class="MuiSkeleton-root MuiSkeleton-wave rounded-[2.5rem] h-full"></div>
-            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-4 rounded-[3.5rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-2 md:row-span-2 rounded-2xl md:rounded-[3rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-2 rounded-2xl md:rounded-[3rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave rounded-2xl md:rounded-[3rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave rounded-2xl md:rounded-[2.5rem] h-full"></div>
+            <div class="MuiSkeleton-root MuiSkeleton-wave md:col-span-4 rounded-2xl md:rounded-[3.5rem] h-full"></div>
         </div>
 
         <!-- Bento Grid Actual -->
         <div id="bento-grid" class="hidden">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
                 <!-- Featured Large: 2 Cols, 2 Rows -->
-                <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-2xl md:rounded-[3rem] cursor-pointer"
                     onclick="window.location.href='explore.html?cat=electronics'">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
                     <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=1000&auto=format&fit=crop"
@@ -202,7 +204,7 @@
                 </div>
 
                 <!-- Wide Medium: 2 Cols, 1 Row -->
-                <div class="md:col-span-2 group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                <div class="md:col-span-2 group relative overflow-hidden rounded-2xl md:rounded-[3rem] cursor-pointer"
                     onclick="window.location.href='explore.html?cat=men'">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 z-10">
                     </div>
@@ -219,7 +221,7 @@
                 </div>
 
                 <!-- Square: 1 Col, 1 Row (Audio) -->
-                <div class="group relative overflow-hidden rounded-[3rem] cursor-pointer"
+                <div class="group relative overflow-hidden rounded-2xl md:rounded-[3rem] cursor-pointer"
                     onclick="window.location.href='explore.html?cat=electronics'">
                     <div class="absolute inset-0 bg-primary/20 z-10"></div>
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop"
@@ -233,7 +235,7 @@
                 </div>
 
                 <!-- Square: 1 Col, 1 Row (Design) -->
-                <div class="group relative overflow-hidden rounded-[2.5rem] border border-gray-100 bg-gray-50 flex items-center justify-center p-10 cursor-pointer hover:bg-white transition-colors duration-500"
+                <div class="group relative overflow-hidden rounded-2xl md:rounded-[2.5rem] border border-gray-100 bg-gray-50 flex items-center justify-center p-10 cursor-pointer hover:bg-white transition-colors duration-500"
                     onclick="window.location.href='explore.html'">
                     <div class="text-center space-y-4">
                         <img src="./assets/expert_logo.png"
@@ -245,7 +247,7 @@
                 </div>
 
                 <!-- Full Width Banner: 4 Cols, 1 Row -->
-                <div class="md:col-span-4 group relative overflow-hidden rounded-[3.5rem] cursor-pointer"
+                <div class="md:col-span-4 group relative overflow-hidden rounded-2xl md:rounded-[3.5rem] cursor-pointer"
                     onclick="window.location.href='explore.html?cat=women'">
                     <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent z-10"></div>
                     <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
@@ -347,6 +349,7 @@
     </footer>
 
     <script type="module" src="./script/cart.js"></script>
+    <script src="./script/search.js"></script>
 </body>
 
 </html>
