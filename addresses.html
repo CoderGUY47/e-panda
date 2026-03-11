@@ -45,7 +45,7 @@
             color: #FFFFFF;
         }
 
-        /* MUI Skeleton Loader System */
+        /*loading cards system*/
         .MuiSkeleton-root {
             display: block;
             background-color: rgba(0, 0, 0, 0.14);
@@ -96,7 +96,7 @@
 </head>
 
 <body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
-    <!-- Header -->
+    <!--header part-->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
         <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
@@ -104,7 +104,7 @@
                     class="h-9 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
-            <!-- Centered Menu -->
+            <!--menu in middle-->
             <ul
                 class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
                 <li><a href="index.html" class="hover:text-primary nav-link-hover transition-colors">Home</a></li>
@@ -114,7 +114,7 @@
             </ul>
 
             <div class="flex items-center gap-6 shrink-0">
-                <!-- Search & Icons -->
+                <!--search and icons-->
                 <div class="hidden md:flex items-center gap-8 text-gray-600">
                     <button class="hover:text-primary transition-colors"><i
                             class="fa-solid fa-magnifying-glass text-sm"></i></button>
@@ -134,7 +134,7 @@
                     </a>
                 </div>
 
-                <!-- Mobile Trigger -->
+                <!--mobile button-->
                 <div class="lg:hidden flex items-center">
                     <input type="checkbox" id="menu-toggle" class="absolute hidden">
                     <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
@@ -154,13 +154,13 @@
         </div>
     </header>
 
-    <!-- Main Dashboard -->
+    <!--main dash part-->
     <main class="w-[85%] mx-auto py-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-            <!-- Sidebar Navigation -->
+            <!--sidebar list-->
             <aside class="lg:col-span-4 xl:col-span-3 space-y-10">
-                <!-- User Profile Intro -->
+                <!--user small info-->
                 <div class="bg-white rounded-4xl p-4 px-6 border border-gray-100 shadow-2xl space-y-3 text-center">
                     <div class="relative inline-block group">
                         <div
@@ -180,7 +180,7 @@
                     </div>
                 </div>
 
-                <!-- Easy Navigation -->
+                <!--easy links-->
                 <nav class="bg-white rounded-[3rem] p-4 border border-gray-100 shadow-2xl overflow-hidden">
                     <div class="space-y-1">
                         <a href="user.html"
@@ -230,10 +230,10 @@
                 </nav>
             </aside>
 
-            <!-- Dashboard Content Area -->
+            <!--content place-->
             <div class="lg:col-span-8 xl:col-span-9 space-y-10">
 
-                <!-- Skeleton Loading State -->
+                <!--loading state-->
                 <div id="dashboard-skeletons" class="space-y-10">
                     <div class="bg-white rounded-4xl p-12 border border-gray-100 shadow-2xl space-y-12">
                         <div class="MuiSkeleton-root MuiSkeleton-wave w-48 h-10"></div>
@@ -244,7 +244,7 @@
                     </div>
                 </div>
 
-                <!-- Actual Protocol Content -->
+                <!--real info-->
                 <div id="dashboard-content" class="hidden space-y-10">
                     <section class="bg-white rounded-4xl p-10 border-2 border-white shadow-2xl space-y-12">
                         <div class="flex justify-between items-center border-b border-gray-50 pb-6">
@@ -255,16 +255,16 @@
                             <button id="add-address-btn" class="bg-primary text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-highlight transition-all active:scale-95 shadow-xl">Deploy New Address</button>
                         </div>
  
-                        <!-- Address Grid -->
+                        <!--address box-->
                         <div id="address-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                             <!-- Dynamic addresses will be injected here -->
+                             <!--items show here-->
                         </div>
                     </section>
                 </div>
             </div>
     </main>
 
-    <!-- Master Footer -->
+    <!--master footer-->
     <footer class="bg-white border-t border-gray-100 pt-24 pb-12 mt-20">
         <div class="w-[85%] mx-auto px-6">
             <div class="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -279,7 +279,7 @@
         </div>
     </footer>
 
-     <!-- Address Modal -->
+     <!--address modal box-->
     <dialog id="address_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
             <h3 id="modal-title" class="font-black text-2xl uppercase tracking-tighter text-primary">Deploy New Address</h3>
@@ -324,7 +324,7 @@
         </form>
     </dialog>
  
-    <!-- Delete Modal -->
+    <!--cancel modal box-->
     <dialog id="delete_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
             <h3 class="font-black text-2xl uppercase tracking-tighter text-rose-500">Decommission Location?</h3>

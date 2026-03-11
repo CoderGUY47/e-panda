@@ -46,7 +46,7 @@ export function updateCartCount() {
     countElements.forEach(el => {
         el.innerText = totalItems;
         
-        // Solid visibility logic without layout shift
+        //show count without moving things
         if (totalItems > 0) {
             el.classList.remove('hidden');
             el.classList.add('flex');
@@ -85,13 +85,13 @@ function showToast(message, icon = 'fa-circle-check') {
     }, 3000);
 }
 
-// Initial count update
+//update count at start
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     updateWishlistCount();
 });
 
-// Expose to window for non-module scripts
+//make functions work everywhere
 window.addToCart = addToCart;
 window.addToWishlist = addToWishlist;
 window.updateCartCount = updateCartCount;

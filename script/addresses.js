@@ -1,7 +1,7 @@
-/**
- * Logistics Registry Logic
- * Expert Series | Modern Retail Experience
- */
+/*
+*address list logic
+*simple code for web
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
     const addressGrid = document.getElementById("address-grid");
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const saveAddressBtn = document.getElementById("save-address-btn");
     const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
 
-    // Form Fields
+    //box for typing
     const addressIdInput = document.getElementById("address-id");
     const addressTagInput = document.getElementById("address-tag");
     const addressTitleInput = document.getElementById("address-title");
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const addressDefaultInput = document.getElementById("address-default");
     const modalTitle = document.getElementById("modal-title");
 
-    // Initial Data
+    //starting data
     let addresses = JSON.parse(localStorage.getItem("addresses"));
     
     if (!addresses || addresses.length === 0) {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!addressGrid) return;
         addressGrid.innerHTML = "";
 
-        // UI Skeletons handle initial state in user.js, so we just render here
+        //loading cards are in other file so we just show them
         addresses.forEach(addr => {
             const card = document.createElement("div");
             card.className = "technical-card p-10 rounded-4xl space-y-6 relative overflow-hidden group";
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             addressGrid.appendChild(card);
         });
 
-        // Re-attach event listeners
+        //make buttons work again
         document.querySelectorAll('.edit-btn').forEach(btn => {
             btn.addEventListener('click', () => editAddress(parseInt(btn.dataset.id)));
         });

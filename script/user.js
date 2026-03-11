@@ -1,16 +1,16 @@
-/**
- * User Protocol Dashboard Logic
- * Expert Series | Modern Retail Experience
- */
+/*
+*user page logic
+*simple code for web
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("User Protocol Initialized...");
 
-  // HUD & Content Containers
+  //boxes for content
   const skels = document.getElementById("dashboard-skeletons");
   const content = document.getElementById("dashboard-content");
 
-  // Input & Display Elements
+  //typing spots and text
   const nameInput = document.getElementById("name-input");
   const displayName = document.getElementById("display-name");
   const updateBtn = document.getElementById("update-info-btn");
@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const itemsCountEl = document.getElementById("items-bought-count");
   const balanceEl = document.getElementById("balance-amount");
 
-  // 1. Initial Synchronization Phase
+  //start sync
   if (skels && content) {
-    // Technical initialization: Load stored protocol data
+    //get old data from store
     const storedName = localStorage.getItem(parseInt("1"));
     const storedEmail = localStorage.getItem(parseInt("2"));
     const storedPhone = localStorage.getItem(parseInt("4"));
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (storedItems && itemsCountEl) itemsCountEl.textContent = storedItems;
     if (storedBalance && balanceEl) balanceEl.textContent = `$${storedBalance}`;
 
-    // Dynamic Synchronization Phase: Rapid access for verified protocols
+    //fast sync for user
     const syncDuration = storedName ? 500 : 1200;
 
     setTimeout(() => {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, syncDuration);
   }
 
-  // 2. Password Visibility Toggle
+  //show or hide password
   const passwordInput = document.getElementById("password-input");
   const toggleBtn = document.getElementById("toggle-password");
   const toggleIcon = toggleBtn?.querySelector("i");
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordInput.getAttribute("type") === "password" ? "text" : "password";
       passwordInput.setAttribute("type", type);
 
-      // Toggle Icon
+      //change eye icon
       if (toggleIcon) {
         toggleIcon.classList.toggle("fa-eye");
         toggleIcon.classList.toggle("fa-eye-slash");
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Identity Update Protocol (Modal Sync)
+  //update name protocol
   if (updateBtn && updateModal) {
     updateBtn.addEventListener("click", () => {
       updateModal.showModal();
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       displayName.textContent = newName;
 
-      // Persist to LocalStorage with parseInt on keys and values
+      //save to store
       localStorage.setItem(parseInt("1"), newName);
       localStorage.setItem(parseInt("2"), newEmail);
       localStorage.setItem(parseInt("4"), parseInt(newPhone.replace(/\D/g, "")) || 0);
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Admin Panel Protocol Synchronized. User updated to:", newName);
       console.log("LocalStorage Updated with Protocol Indices.");
 
-      // Visual feedback on the trigger button
+      //show button update
       if (updateBtn) {
         const originalText = updateBtn.textContent;
         updateBtn.textContent = "PROTOCOL UPDATED";
@@ -108,5 +108,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Note: Future identity management and order tracking functions to be implemented here.
+  //future work goes here
 });

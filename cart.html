@@ -36,7 +36,7 @@
         .item-row:hover .trash-btn { opacity: 1; transform: translateX(0); }
         .trash-btn { opacity: 0; transform: translateX(10px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
-        /* MUI Skeleton Loader System */
+        /*loading cards system*/
         .MuiSkeleton-root {
             display: block;
             background-color: rgba(0, 0, 0, 0.15);
@@ -93,7 +93,7 @@
 </head>
 
 <body class="bg-gray-50 text-gray-900 min-h-screen antialiased flex flex-col">
-    <!-- Master Header -->
+    <!--top bar-->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
         <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
@@ -101,7 +101,7 @@
                     class="h-9 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
-            <!-- Centered Menu -->
+            <!--menu in middle-->
             <ul
                 class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
                 <li><a href="index.html" class="hover:text-primary nav-link-hover transition-colors">Home</a></li>
@@ -130,7 +130,7 @@
                     </a>
                 </div>
 
-                <!-- Mobile Trigger -->
+                <!--mobile button-->
                 <div class="lg:hidden flex items-center">
                     <input type="checkbox" id="menu-toggle" class="absolute hidden">
                     <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i

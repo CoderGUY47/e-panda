@@ -46,7 +46,7 @@
         .pagination-btn:hover:not(.disabled) { border-color: #111827; color: #111827; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .pagination-btn.active { background: #111827; color: white; border-color: #111827; }
         .pagination-btn.disabled { opacity: 0.3; cursor: not-allowed; }
-        /* MUI Skeleton Loader System */
+        /*loading cards system*/
         .MuiSkeleton-root {
             display: block;
             background-color: rgba(0, 0, 0, 0.15);
@@ -103,7 +103,7 @@
 </head>
 
 <body class="bg-gray-50/50 text-gray-900 min-h-screen antialiased">
-    <!-- Master Header -->
+    <!--top bar-->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
         <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
@@ -111,7 +111,7 @@
                     class="h-9 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
-            <!-- Centered Menu -->
+            <!--menu in middle-->
             <ul
                 class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
                 <li><a href="index.html" class="hover:text-primary nav-link-hover transition-colors">Home</a></li>
@@ -140,7 +140,7 @@
                     </a>
                 </div>
 
-                <!-- Mobile Trigger -->
+                <!--mobile button-->
                 <div class="lg:hidden flex items-center">
                     <input type="checkbox" id="menu-toggle" class="absolute hidden">
                     <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i

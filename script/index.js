@@ -1,28 +1,28 @@
-// Fetching Products from Fake Store API with .then syntax
+//get items from store api with then
 fetch('https://fakestoreapi.com/products?limit=6')
     .then(res => res.json())
     .then(products => {
         const grid = document.getElementById('product-grid');
         if (!grid) return;
 
-        // 1. Immediately clear and Show matching number of High-Fidelity Skeletons
+        //clear first and show same number of loading cards
         grid.innerHTML = products.map(() => `
             <div class="group bg-white rounded-[2rem] border border-gray-100 p-5 flex flex-col h-[430px] overflow-hidden opacity-70 animate-pulse relative">
-                <!-- Segment A: Visual Preview -->
+                <!-- part a: image look -->
                 <div class="relative bg-gray-100 rounded-[1.5rem] m-0 mb-4 h-64 shrink-0 overflow-hidden">
                     <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-full"></div>
                 </div>
                 
-                <!-- Segment B: Technical Content (Split into 2 Divisions) -->
+                <!-- part b: info split into two parts -->
                 <div class="flex-grow flex flex-col justify-between px-2">
-                    <!-- Division 1: Intel -->
+                    <!-- section 1: info -->
                     <div class="space-y-3">
                         <div class="MuiSkeleton-root MuiSkeleton-wave w-1/4 h-2 rounded-full"></div>
                         <div class="MuiSkeleton-root MuiSkeleton-wave w-5/6 h-6 rounded-lg"></div>
                         <div class="MuiSkeleton-root MuiSkeleton-wave w-full h-2 rounded-full"></div>
                     </div>
                     
-                    <!-- Division 2: Settlement -->
+                    <!-- section 2: price -->
                     <div class="pt-4 border-t border-gray-50 flex justify-between items-end pb-2">
                         <div class="space-y-1">
                             <div class="MuiSkeleton-root MuiSkeleton-wave w-10 h-1.5 rounded-full"></div>
@@ -34,9 +34,9 @@ fetch('https://fakestoreapi.com/products?limit=6')
             </div>
         `).join('');
 
-        // 2. Deliberate 5-second synchronization period
+        //wait for 5 seconds for sync
         setTimeout(() => {
-            grid.innerHTML = ''; // Clear skeletons
+            grid.innerHTML = ''; //remove loading cards
             products.forEach(product => {
                 const isAvailable = product.rating.count > 150;
                 const statusTheme = isAvailable ? "text-green-600 bg-green-500" : "text-red-500 bg-red-500";
@@ -47,7 +47,7 @@ fetch('https://fakestoreapi.com/products?limit=6')
                 const card = document.createElement('div');
                 card.className = "group bg-white rounded-[2rem] border border-gray-100 shadow-[10px_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[10px_45px_100px_-20px_rgba(0,0,0,0.2)] transition-all duration-700 flex flex-col h-[430px] overflow-hidden";
                 card.innerHTML = `
-                    <!-- Visual Segment -->
+                    <!-- image part -->
                     <div class="relative bg-gray-300/50 rounded-xl m-2 p-5 h-64 shrink-0 flex items-center justify-center overflow-hidden">
                         <div class="absolute top-4 left-4 z-10 bg-white/60 backdrop-blur-xl px-2 py-1 rounded-full border border-white/20">
                              <div class="flex items-center gap-2">
@@ -75,16 +75,16 @@ fetch('https://fakestoreapi.com/products?limit=6')
                         </div>
                     </div>
 
-                    <!-- Content Segment -->
+                    <!-- info part -->
                     <div class="flex-grow flex flex-col justify-between px-6 py-4">
-                        <!-- Division 1: Product Intel -->
+                        <!-- section 1: product info -->
                         <div class="space-y-1">
                             <p class="text-[8px] font-black text-highlight uppercase tracking-[0.3em]">${product.category}</p>
                             <h3 class="text-lg font-bold text-gray-900 truncate group-hover:text-primary transition-colors tracking-tight leading-tight">${product.title}</h3>
                             <p class="text-[10px] text-gray-400 line-clamp-2 font-medium pt-2">Refined for the modern era. Curated with precision for high-end lifestyle performance.</p>
                         </div>
 
-                        <!-- Division 2: Settlement & Value -->
+                        <!-- section 2: price and value -->
                         <div class="flex items-center justify-between border-t border-gray-100 pt-3">
                             <div class="flex flex-col">
                                 <span class="text-[7px] font-bold text-gray-300 uppercase tracking-widest">Metadata Price</span>
@@ -98,7 +98,7 @@ fetch('https://fakestoreapi.com/products?limit=6')
                 `;
                 grid.appendChild(card);
             });
-        }, 2500); // 3 second sync period
+        }, 2500); //3 second wait
     })
     .catch(err => {
         console.error('Error fetching products:', err);
