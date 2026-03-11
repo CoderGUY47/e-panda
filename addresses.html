@@ -76,6 +76,22 @@
             60% { transform: translateX(100%); }
             100% { transform: translateX(100%); }
         }
+        .nav-link-hover {
+            position: relative;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -4px;
+            left: 0;
+            background-color: #F59E0B;
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -91,10 +107,10 @@
             <!-- Centered Menu -->
             <ul
                 class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
-                <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
-                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
-                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+                <li><a href="index.html" class="hover:text-primary nav-link-hover transition-colors">Home</a></li>
+                <li><a href="collection.html" class="hover:text-primary nav-link-hover transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary nav-link-hover transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary nav-link-hover transition-colors">Journal</a></li>
             </ul>
 
             <div class="flex items-center gap-6 shrink-0">
@@ -236,66 +252,12 @@
                                 <h2 class="text-3xl font-black uppercase tracking-tighter text-primary">Logistics Registry</h2>
                                 <p class="text-gray-400 text-xs font-light tracking-widest uppercase">Verified shipping destinations and archival locations.</p>
                             </div>
-                            <button class="bg-primary text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-highlight transition-all active:scale-95 shadow-xl">Deploy New Address</button>
+                            <button id="add-address-btn" class="bg-primary text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-highlight transition-all active:scale-95 shadow-xl">Deploy New Address</button>
                         </div>
-
+ 
                         <!-- Address Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- Address Entry 01 -->
-                            <div class="technical-card p-10 rounded-4xl space-y-6 relative overflow-hidden group">
-                                <div class="absolute top-6 right-6 flex gap-2">
-                                     <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-primary transition-colors transition-transform group-hover:scale-110"><i class="fa-solid fa-pen text-[10px]"></i></button>
-                                     <button class="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center text-rose-300 hover:text-rose-500 transition-colors transition-transform group-hover:scale-110"><i class="fa-solid fa-trash text-[10px]"></i></button>
-                                </div>
-                                
-                                <div class="space-y-1">
-                                    <span class="text-[9px] font-black text-highlight uppercase tracking-[0.3em] px-3 py-1 bg-highlight/5 rounded-full inline-block mb-2 border border-highlight/10">Default Hub</span>
-                                    <h3 class="text-xl font-black uppercase tracking-tighter">Primary Residence</h3>
-                                </div>
-                                
-                                <div class="space-y-4 pt-4 border-t border-gray-50">
-                                    <div class="flex items-start gap-4">
-                                        <i class="fa-solid fa-location-dot text-primary mt-1 text-xs"></i>
-                                        <p class="text-[11px] font-bold text-gray-400 uppercase leading-relaxed tracking-wider">
-                                            1224 Panda Archival District<br>
-                                            Level 01, Tech Sector 7<br>
-                                            San Francisco, CA 94103
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-phone text-primary text-xs"></i>
-                                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">+1 (555) 012-3456</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Address Entry 02 -->
-                            <div class="technical-card p-10 rounded-4xl space-y-6 relative overflow-hidden group">
-                                <div class="absolute top-6 right-6 flex gap-2">
-                                     <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-primary transition-colors transition-transform group-hover:scale-110"><i class="fa-solid fa-pen text-[10px]"></i></button>
-                                     <button class="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center text-rose-300 hover:text-rose-500 transition-colors transition-transform group-hover:scale-110"><i class="fa-solid fa-trash text-[10px]"></i></button>
-                                </div>
-                                
-                                <div class="space-y-1">
-                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em] px-3 py-1 bg-gray-50 rounded-full inline-block mb-2 border border-gray-100">Secondary Node</span>
-                                    <h3 class="text-xl font-black uppercase tracking-tighter">Office Terminal</h3>
-                                </div>
-                                
-                                <div class="space-y-4 pt-4 border-t border-gray-50">
-                                    <div class="flex items-start gap-4">
-                                        <i class="fa-solid fa-building text-primary mt-1 text-xs"></i>
-                                        <p class="text-[11px] font-bold text-gray-400 uppercase leading-relaxed tracking-wider">
-                                            88 High-Speed Terminal Plaza<br>
-                                            Unit 420, Alpha Tower<br>
-                                            New York, NY 10001
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-phone text-primary text-xs"></i>
-                                        <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">+1 (212) 555-7890</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="address-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                             <!-- Dynamic addresses will be injected here -->
                         </div>
                     </section>
                 </div>
@@ -317,8 +279,73 @@
         </div>
     </footer>
 
+     <!-- Address Modal -->
+    <dialog id="address_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
+            <h3 id="modal-title" class="font-black text-2xl uppercase tracking-tighter text-primary">Deploy New Address</h3>
+            <div class="space-y-4">
+                <input type="hidden" id="address-id">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Tag/Label (e.g. Default Hub)</label>
+                    <input type="text" id="address-tag" placeholder="e.g. Default Hub" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Title</label>
+                    <input type="text" id="address-title" placeholder="e.g. Primary Residence" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Street Address</label>
+                    <textarea id="address-street" rows="3" placeholder="Street, Sector, Level" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">City/State/Zip</label>
+                        <input type="text" id="address-city" placeholder="City, ST 00000" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Phone</label>
+                        <input type="text" id="address-phone" placeholder="+1 (000) 000-0000" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 px-2">
+                    <input type="checkbox" id="address-default" class="checkbox checkbox-sm checkbox-primary">
+                    <label for="address-default" class="text-[10px] font-black uppercase tracking-widest text-gray-400 cursor-pointer">Set as default</label>
+                </div>
+            </div>
+            <div class="modal-action">
+                <form method="dialog" class="flex gap-4 w-full">
+                    <button class="flex-1 bg-gray-100 text-gray-400 px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-gray-200 transition-all">Cancel</button>
+                    <button id="save-address-btn" type="button" class="flex-1 bg-primary text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-highlight transition-all shadow-xl active:scale-95">Save Terminal</button>
+                </form>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop bg-black/40 backdrop-blur-sm">
+            <button>close</button>
+        </form>
+    </dialog>
+ 
+    <!-- Delete Modal -->
+    <dialog id="delete_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
+            <h3 class="font-black text-2xl uppercase tracking-tighter text-rose-500">Decommission Location?</h3>
+            <p class="text-gray-400 text-xs font-light tracking-wide leading-relaxed uppercase">
+                Are you sure you want to permanently remove this shipping destination from our logistical archive?
+            </p>
+            <div class="modal-action">
+                <form method="dialog" class="flex gap-4 w-full">
+                    <button class="flex-1 bg-gray-100 text-gray-400 px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-gray-200 transition-all">Abort</button>
+                    <button id="confirm-delete-btn" type="button" class="flex-1 bg-rose-500 text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-rose-600 transition-all shadow-xl active:scale-95">Confirm Deletion</button>
+                </form>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop bg-black/40 backdrop-blur-sm">
+            <button>close</button>
+        </form>
+    </dialog>
+ 
     <script type="module" src="./script/cart.js"></script>
     <script src="./script/user.js"></script>
+    <script src="./script/addresses.js"></script>
 </body>
 
 </html>

@@ -62,6 +62,22 @@
             width: 48px;
             height: 48px;
         }
+        .nav-link-hover {
+            position: relative;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -4px;
+            left: 0;
+            background-color: #F59E0B;
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -77,10 +93,10 @@
             <!-- Centered Menu -->
             <ul
                 class="hidden lg:flex absolute left-1/2 -translate-x-1/2 gap-10 text-[11px] font-semibold text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
-                <li><a href="collection.html" class="hover:text-primary transition-colors">Collection</a></li>
-                <li><a href="explore.html" class="hover:text-primary transition-colors">Explorer</a></li>
-                <li><a href="journal.html" class="hover:text-primary transition-colors">Journal</a></li>
+                <li><a href="index.html" class="hover:text-primary nav-link-hover transition-colors">Home</a></li>
+                <li><a href="collection.html" class="hover:text-primary nav-link-hover transition-colors">Collection</a></li>
+                <li><a href="explore.html" class="hover:text-primary nav-link-hover transition-colors">Explorer</a></li>
+                <li><a href="journal.html" class="hover:text-primary nav-link-hover transition-colors">Journal</a></li>
             </ul>
 
             <div class="flex items-center gap-6 shrink-0">
