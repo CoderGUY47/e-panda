@@ -62,7 +62,7 @@ function renderBanner() {
                     <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none max-w-[250px]">
                         ${item.title}
                     </h3>
-                    <div class="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <div class="flex items-center gap-3 opacity-100 md:opacity-0 group-hover:opacity-100 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                         <span class="text-[10px] font-black text-highlight uppercase tracking-[0.3em]">Redeem Offer</span>
                         <div class="w-8 h-[1px] bg-highlight"></div>
                         <i class="fa-solid fa-arrow-right text-highlight text-xs"></i>

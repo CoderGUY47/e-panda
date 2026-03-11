@@ -210,8 +210,8 @@ if (grid && paginationElement) {
                         </button>
                     </div>
                     <img src="${product.image}" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)">
-                    <div class="absolute inset-x-4 bottom-4 transform translate-y-24 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)]">
-                        <button id="add-${product.id}" class="w-full bg-primary text-white py-4 rounded-2xl font-bold uppercase tracking-widest text-[9px] shadow-2xl hover:bg-highlight active:scale-95 transition-all">
+                    <div class="absolute inset-x-4 bottom-4 transform translate-y-0 md:translate-y-24 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)]">
+                        <button id="add-${product.id}" class="w-full bg-primary text-white py-3 md:py-4 rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[8px] md:text-[9px] shadow-2xl hover:bg-highlight active:scale-95 transition-all">
                             Add to Cart
                         </button>
                     </div>

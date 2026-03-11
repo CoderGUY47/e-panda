@@ -28,20 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
         addresses = [
             {
                 id: 1,
-                tag: "Default Hub",
-                title: "Primary Residence",
-                street: "1224 Panda Archival District\nLevel 01, Tech Sector 7",
-                city: "San Francisco, CA 94103",
-                phone: "+1 (555) 012-3456",
+                tag: "Home",
+                title: "My House",
+                street: "123 Main Street\nApt 4B",
+                city: "New York, NY 10001",
+                phone: "123-456-7890",
                 isDefault: true
             },
             {
                 id: 2,
-                tag: "Secondary Node",
-                title: "Office Terminal",
-                street: "88 High-Speed Terminal Plaza\nUnit 420, Alpha Tower",
-                city: "New York, NY 10001",
-                phone: "+1 (212) 555-7890",
+                tag: "Work",
+                title: "Office HQ",
+                street: "456 Business Blvd\nSuite 200",
+                city: "San Francisco, CA 94103",
+                phone: "987-654-3210",
                 isDefault: false
             }
         ];
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const addr = addresses.find(a => a.id === id);
         if (!addr) return;
 
-        modalTitle.textContent = "Adjust Logistical Node";
+        modalTitle.textContent = "Edit Address";
         addressIdInput.value = addr.id;
         addressTagInput.value = addr.tag;
         addressTitleInput.value = addr.title;
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (addAddressBtn) {
         addAddressBtn.addEventListener("click", () => {
-            modalTitle.textContent = "Deploy New Address";
+            modalTitle.textContent = "Add New Address";
             addressIdInput.value = "";
             addressTagInput.value = "";
             addressTitleInput.value = "";
@@ -137,11 +137,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const id = addressIdInput.value;
             const newAddr = {
                 id: id ? parseInt(id) : Date.now(),
-                tag: addressTagInput.value || "External Node",
-                title: addressTitleInput.value || "Unnamed Location",
-                street: addressStreetInput.value || "Undisclosed District",
-                city: addressCityInput.value || "Zone-0",
-                phone: addressPhoneInput.value || "No Protocol Phone",
+                tag: addressTagInput.value || "Other",
+                title: addressTitleInput.value || "My Address",
+                street: addressStreetInput.value || "Unknown Street",
+                city: addressCityInput.value || "Unknown City",
+                phone: addressPhoneInput.value || "No Phone Provided",
                 isDefault: addressDefaultInput.checked
             };
 

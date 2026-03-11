@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Expert | Logistics & Address Protocol</title>
+    <title>Expert | My Addresses</title>
     <link rel="icon" type="image/png" href="./assets/fav-ico.png?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,10 +98,10 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
     <!--header part-->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
-        <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
+        <div class="w-[92%] lg:w-[85%] mx-auto px-0 py-2.5 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
                 <img src="./assets/expert_logo.png" alt="Expert Logo"
-                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
+                    class="h-7.5 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
             <!--menu in middle-->
@@ -135,10 +135,23 @@
                 </div>
 
                 <!--mobile button-->
-                <div class="lg:hidden flex items-center">
+                <div class="lg:hidden flex items-center gap-2">
+                    <div class="flex items-center gap-4 text-gray-600 mr-2">
+                        <button class="hover:text-primary transition-colors"><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                        <a href="wishlist.html" class="hover:text-primary transition-colors relative inline-flex items-center justify-center">
+                            <i class="fa-regular fa-heart text-sm"></i>
+                            <span class="wishlist-count absolute -top-2 -right-2 bg-amber-500 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
+                        </a>
+                        <a href="user.html" class="text-primary transition-colors"><i class="fa-regular fa-user text-sm"></i></a>
+                        <a href="cart.html" class="hover:text-primary relative inline-flex items-center justify-center">
+                            <i class="fa-solid fa-bag-shopping text-sm"></i>
+                            <span class="cart-count absolute -top-2 -right-2 bg-rose-500/80 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
+                        </a>
+                    </div>
                     <input type="checkbox" id="menu-toggle" class="absolute hidden">
-                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
-                            class="fa-solid fa-bars-staggered"></i></label>
+                    <label for="menu-toggle" class="cursor-pointer bg-gray-200 p-2 rounded-lg inline-flex items-center justify-center transition-colors hover:bg-gray-300">
+                        <i class="fa-solid fa-bars-staggered text-sm"></i>
+                    </label>
                     <div id="mobile-menu"
                         class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
                         <a href="index.html" class="text-lg font-bold hover:text-primary transition-colors">Home</a>
@@ -155,7 +168,7 @@
     </header>
 
     <!--main dash part-->
-    <main class="w-[85%] mx-auto py-12">
+    <main class="w-[92%] lg:w-[85%] mx-auto py-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
             <!--sidebar list-->
@@ -165,7 +178,7 @@
                     <div class="relative inline-block group">
                         <div
                             class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-highlight transition-all duration-700">
-                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop"
+                            <img src="./assets/profile-pic-1.png"
                                 class="w-full h-full object-cover">
                         </div>
                         <button
@@ -249,10 +262,10 @@
                     <section class="bg-white rounded-4xl p-10 border-2 border-white shadow-2xl space-y-12">
                         <div class="flex justify-between items-center border-b border-gray-50 pb-6">
                             <div class="space-y-1">
-                                <h2 class="text-3xl font-black uppercase tracking-tighter text-primary">Logistics Registry</h2>
-                                <p class="text-gray-400 text-xs font-light tracking-widest uppercase">Verified shipping destinations and archival locations.</p>
+                                <h2 class="text-3xl font-black uppercase tracking-tighter text-primary">Address Book</h2>
+                                <p class="text-gray-400 text-xs font-light tracking-widest uppercase">Saved locations for your deliveries.</p>
                             </div>
-                            <button id="add-address-btn" class="bg-primary text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-highlight transition-all active:scale-95 shadow-xl">Deploy New Address</button>
+                            <button id="add-address-btn" class="bg-primary text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[9px] hover:bg-highlight transition-all active:scale-95 shadow-xl">Add New Address</button>
                         </div>
  
                         <!--address box-->
@@ -266,10 +279,9 @@
 
     <!--master footer-->
     <footer class="bg-white border-t border-gray-100 pt-24 pb-12 mt-20">
-        <div class="w-[85%] mx-auto px-6">
+        <div class="w-[92%] lg:w-[85%] mx-auto px-6">
             <div class="pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p class="text-gray-300 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 EXPERT SERIES
-                    PROTOCOL</p>
+                <p class="text-gray-300 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 EXPERT SERIES</p>
                 <div class="flex items-center gap-8 grayscale opacity-20">
                     <i class="fa-brands fa-cc-visa text-2xl"></i>
                     <i class="fa-brands fa-cc-mastercard text-2xl"></i>
@@ -282,20 +294,20 @@
      <!--address modal box-->
     <dialog id="address_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
-            <h3 id="modal-title" class="font-black text-2xl uppercase tracking-tighter text-primary">Deploy New Address</h3>
+            <h3 id="modal-title" class="font-black text-2xl uppercase tracking-tighter text-primary">Add New Address</h3>
             <div class="space-y-4">
                 <input type="hidden" id="address-id">
                 <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Tag/Label (e.g. Default Hub)</label>
-                    <input type="text" id="address-tag" placeholder="e.g. Default Hub" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Tag/Label (e.g. Home, Work)</label>
+                    <input type="text" id="address-tag" placeholder="e.g. Home" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
                 </div>
                 <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Title</label>
-                    <input type="text" id="address-title" placeholder="e.g. Primary Residence" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Full Name</label>
+                    <input type="text" id="address-title" placeholder="e.g. John Doe" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
                 </div>
                 <div class="space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Street Address</label>
-                    <textarea id="address-street" rows="3" placeholder="Street, Sector, Level" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all"></textarea>
+                    <textarea id="address-street" rows="3" placeholder="Street, Apartment or Suite" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all"></textarea>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2">
@@ -303,8 +315,8 @@
                         <input type="text" id="address-city" placeholder="City, ST 00000" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
                     </div>
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Phone</label>
-                        <input type="text" id="address-phone" placeholder="+1 (000) 000-0000" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-2">Phone Number</label>
+                        <input type="text" id="address-phone" placeholder="e.g. 123-456-7890" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 text-xs font-bold focus:outline-none focus:border-primary transition-all">
                     </div>
                 </div>
                 <div class="flex items-center gap-2 px-2">
@@ -315,7 +327,7 @@
             <div class="modal-action">
                 <form method="dialog" class="flex gap-4 w-full">
                     <button class="flex-1 bg-gray-100 text-gray-400 px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-gray-200 transition-all">Cancel</button>
-                    <button id="save-address-btn" type="button" class="flex-1 bg-primary text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-highlight transition-all shadow-xl active:scale-95">Save Terminal</button>
+                    <button id="save-address-btn" type="button" class="flex-1 bg-primary text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-highlight transition-all shadow-xl active:scale-95">Save Address</button>
                 </form>
             </div>
         </div>
@@ -327,14 +339,14 @@
     <!--cancel modal box-->
     <dialog id="delete_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box bg-white rounded-4xl border border-gray-100 shadow-2xl p-10 space-y-6">
-            <h3 class="font-black text-2xl uppercase tracking-tighter text-rose-500">Decommission Location?</h3>
+            <h3 class="font-black text-2xl uppercase tracking-tighter text-rose-500">Delete Address?</h3>
             <p class="text-gray-400 text-xs font-light tracking-wide leading-relaxed uppercase">
-                Are you sure you want to permanently remove this shipping destination from our logistical archive?
+                Are you sure you want to permanently remove this delivery address from your account?
             </p>
             <div class="modal-action">
                 <form method="dialog" class="flex gap-4 w-full">
-                    <button class="flex-1 bg-gray-100 text-gray-400 px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-gray-200 transition-all">Abort</button>
-                    <button id="confirm-delete-btn" type="button" class="flex-1 bg-rose-500 text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-rose-600 transition-all shadow-xl active:scale-95">Confirm Deletion</button>
+                    <button class="flex-1 bg-gray-100 text-gray-400 px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-gray-200 transition-all">Cancel</button>
+                    <button id="confirm-delete-btn" type="button" class="flex-1 bg-rose-500 text-white px-8 py-4 rounded-xl font-black uppercase text-[9px] tracking-widest hover:bg-rose-600 transition-all shadow-xl active:scale-95">Delete Address</button>
                 </form>
             </div>
         </div>

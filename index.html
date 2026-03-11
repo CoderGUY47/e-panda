@@ -390,10 +390,10 @@
     </div>
     <!--top bar-->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
-        <div class="w-[85%] mx-auto px-0 py-4 flex justify-between items-center relative">
+        <div class="w-[92%] lg:w-[85%] mx-auto px-0 py-2.5 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
                 <img src="./assets/expert_logo.png" alt="Expert Logo"
-                    class="h-9 group-hover:cursor-pointer transition-transform duration-300">
+                    class="h-7.5 group-hover:cursor-pointer transition-transform duration-300">
             </a>
 
             <!--menu in middle-->
@@ -427,10 +427,23 @@
                 </div>
 
                 <!--mobile button-->
-                <div class="lg:hidden flex items-center">
+                <div class="lg:hidden flex items-center gap-2">
+                    <div class="flex items-center gap-4 text-gray-600 mr-2">
+                        <button class="hover:text-primary transition-colors"><i class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                        <a href="wishlist.html" class="hover:text-primary transition-colors relative inline-flex items-center justify-center">
+                            <i class="fa-regular fa-heart text-sm"></i>
+                            <span class="wishlist-count absolute -top-2 -right-2 bg-amber-500 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
+                        </a>
+                        <a href="user.html" class="hover:text-primary transition-colors"><i class="fa-regular fa-user text-sm"></i></a>
+                        <a href="cart.html" class="hover:text-primary relative inline-flex items-center justify-center">
+                            <i class="fa-solid fa-bag-shopping text-sm"></i>
+                            <span class="cart-count absolute -top-2 -right-2 bg-rose-500/80 text-white text-[8px] px-1 py-1 min-w-[14px] h-[14px] items-center justify-center rounded-full font-bold hidden">0</span>
+                        </a>
+                    </div>
                     <input type="checkbox" id="menu-toggle" class="absolute hidden">
-                    <label for="menu-toggle" class="text-2xl cursor-pointer p-2"><i
-                            class="fa-solid fa-bars-staggered"></i></label>
+                    <label for="menu-toggle" class="cursor-pointer bg-gray-200 p-2 rounded-lg inline-flex items-center justify-center transition-colors hover:bg-gray-300">
+                        <i class="fa-solid fa-bars-staggered text-sm"></i>
+                    </label>
                     <div id="mobile-menu"
                         class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-8 space-y-6 shadow-2xl">
                         <a href="index.html" class="text-lg font-bold text-primary">Home</a>
@@ -483,13 +496,13 @@
         </div>
 
         <!--full width ads-->
-        <section class="w-[95%] mx-auto px-6 md:px-10 py-12 bg-white">
+        <section class="w-full lg:w-[95%] mx-auto px-4 md:px-10 py-12 bg-white">
             <div id="banner-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-max">
                 <!--items show here-->
             </div>
         </section>
 
-        <div class="w-[65%] mx-auto">
+        <div class="w-[92%] lg:w-[85%] mx-auto">
         <!--simple good things-->
         <section class="border-b border-gray-100 py-16">
             <div class="px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
@@ -728,7 +741,7 @@
 
     <!--simple bottom part-->
     <footer class="bg-white border-t border-gray-100 pt-24 pb-12">
-        <div class="w-[65%] mx-auto px-6">
+        <div class="w-[92%] lg:w-[85%] mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
                 <div class="col-span-1 md:col-span-1 space-y-8">
                     <img src="./assets/expert_logo.png" alt="Expert" class="h-8">
