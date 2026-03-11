@@ -390,7 +390,7 @@
     </div>
     <!--top bar-->
     <header class="glass-header sticky top-0 z-[100] border-b border-gray-100">
-        <div class="w-[92%] lg:w-[85%] mx-auto px-0 py-2.5 flex justify-between items-center relative">
+        <div class="w-[92%] lg:w-[75%] mx-auto px-0 py-2.5 flex justify-between items-center relative">
             <a href="index.html" class="flex items-center gap-2 group shrink-0">
                 <img src="./assets/expert_logo.png" alt="Expert Logo"
                     class="h-7.5 group-hover:cursor-pointer transition-transform duration-300">
@@ -408,8 +408,10 @@
             <div class="flex items-center gap-6 shrink-0">
                 <!--search and icons-->
                 <div class="hidden md:flex items-center gap-8 text-gray-600">
-                    <button class="hover:text-primary transition-colors"><i
-                            class="fa-solid fa-magnifying-glass text-sm"></i></button>
+                    <div class="relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass text-sm text-gray-400 absolute left-3"></i>
+                        <input type="text" id="search-input" placeholder="Search products..." class="bg-gray-50 border border-gray-300 rounded-full pl-8 pr-4 py-2 text-sm text-gray-400 font-medium lowercase tracking-widest placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all w-48 lg:w-48">
+                    </div>
                     <a href="wishlist.html"
                         class="hover:text-primary transition-colors relative group inline-flex items-center justify-center">
                         <i class="fa-regular fa-heart text-sm"></i>
@@ -496,13 +498,13 @@
         </div>
 
         <!--full width ads-->
-        <section class="w-full lg:w-[95%] mx-auto px-4 md:px-10 py-12 bg-white">
+        <section class="w-full lg:w-[75%] mx-auto px-4 md:px-10 py-12 bg-white">
             <div id="banner-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-max">
                 <!--items show here-->
             </div>
         </section>
 
-        <div class="w-[92%] lg:w-[85%] mx-auto">
+        <div class="w-[92%] lg:w-[75%] mx-auto">
         <!--simple good things-->
         <section class="border-b border-gray-100 py-16">
             <div class="px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
@@ -741,7 +743,7 @@
 
     <!--simple bottom part-->
     <footer class="bg-white border-t border-gray-100 pt-24 pb-12">
-        <div class="w-[92%] lg:w-[85%] mx-auto px-4 sm:px-6">
+        <div class="w-[92%] lg:w-[75%] mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
                 <div class="col-span-1 md:col-span-1 space-y-8">
                     <img src="./assets/expert_logo.png" alt="Expert" class="h-8">

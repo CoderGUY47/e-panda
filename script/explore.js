@@ -15,6 +15,7 @@ if (grid && paginationElement) {
 
   let currentCategory = "all";
   let currentStatus = "all";
+  let currentSearch = "";
 
   // Initialize
   fetch("https://fakestoreapi.com/products")
@@ -78,9 +79,9 @@ if (grid && paginationElement) {
       }, 3000); // 3 second synchronization window
     });
 
-  function updateView(paginationInstance) {
+  function updateView(paginationInstance, instant = false) {
     // 1. Immediately show Skeletons when starting a filter change
-    if (grid) {
+    if (!instant && grid) {
       grid.innerHTML = Array(perPage).fill(0).map(() => `
           <div class="group bg-white rounded-[2rem] border border-gray-100 p-5 flex flex-col h-[430px] overflow-hidden opacity-70 animate-pulse relative">
               <!-- Segment A: Visual Preview -->
@@ -110,20 +111,27 @@ if (grid && paginationElement) {
       `).join('');
     }
 
-    // 2. Wait 5s before performing the actual view update
-    setTimeout(() => {
+    const applyFilters = () => {
         filteredProducts = products.filter((p) => {
           const catMatch =
             currentCategory === "all" || p.category === currentCategory;
           const statusMatch = currentStatus === "all" || p.status === currentStatus;
-          return catMatch && statusMatch;
+          const titleMatch = currentSearch === "" || p.title.toLowerCase().includes(currentSearch);
+          return catMatch && statusMatch && titleMatch;
         });
     
         paginationInstance.setCurrentPage(1);
         paginationInstance.setTotalItems(filteredProducts.length);
         renderProducts(1, paginationInstance);
         updateButtonStyles(currentCategory, currentStatus);
-    }, 2500);
+    };
+
+    if (instant) {
+        applyFilters();
+    } else {
+        // 2. Wait 2.5s before performing the actual view update
+        setTimeout(applyFilters, 2500);
+    }
   }
 
   function updateButtonStyles(cat, status) {
@@ -265,5 +273,13 @@ if (grid && paginationElement) {
       currentStatus = btn.dataset.status;
       updateView(pagination);
     };
+  });
+
+  const searchInputElements = document.querySelectorAll("#search-input");
+  searchInputElements.forEach(input => {
+    input.addEventListener("input", (e) => {
+      currentSearch = e.target.value.toLowerCase();
+      updateView(pagination, true);
+    });
   });
 }

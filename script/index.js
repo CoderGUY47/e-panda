@@ -1,7 +1,83 @@
+let allProducts = [];
+
+let renderGridProducts = (productList) => {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    if (productList.length === 0) {
+        grid.innerHTML = '<div class="col-span-full py-20 text-center text-gray-300 font-black uppercase text-[10px] tracking-widest">No Matches Found</div>';
+        return;
+    }
+
+    productList.forEach(product => {
+        const isAvailable = product.rating.count > 150;
+        const statusTheme = isAvailable ? "text-green-600 bg-green-500" : "text-red-500 bg-red-500";
+        const statusLabel = isAvailable ? "Stock In" : "Stock Out";
+
+        const productData = JSON.stringify(product).replace(/'/g, "&apos;");
+        
+        const card = document.createElement('div');
+        card.className = "group bg-white rounded-[2rem] border border-gray-100 shadow-[10px_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[10px_45px_100px_-20px_rgba(0,0,0,0.2)] transition-all duration-700 flex flex-col h-[430px] overflow-hidden";
+        card.innerHTML = `
+            <!-- image part -->
+            <div class="relative bg-gray-300/50 rounded-xl m-2 p-5 h-64 shrink-0 flex items-center justify-center overflow-hidden">
+                <div class="absolute top-4 left-4 z-10 bg-white/60 backdrop-blur-xl px-2 py-1 rounded-full border border-white/20">
+                     <div class="flex items-center gap-2">
+                         <span class="flex h-1.5 w-1.5 relative">
+                             <span class="animate-bounce absolute inline-flex h-full w-full rounded-full ${statusTheme} opacity-75"></span>
+                             <span class="relative inline-flex rounded-full h-1.5 w-1.5 ${statusTheme}"></span>
+                         </span>
+                         <span class="text-[8px] font-black uppercase tracking-[0.2em] text-gray-500">${statusLabel}</span>
+                     </div>
+                </div>
+                <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
+                    <div class="bg-white/90 backdrop-blur-xl border border-white/20 px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md">
+                        <i class="fa-solid fa-star text-highlight text-[8px]"></i>
+                        <span class="text-[9px] font-black text-gray-900">${product.rating.rate}</span>
+                    </div>
+                    <button onclick='addToWishlist(${productData})' class="w-8 h-8 bg-white/95 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)] group/heart active:scale-95">
+                        <i class="fa-regular fa-heart text-[10px] group-hover/heart:scale-125 transition-transform"></i>
+                    </button>
+                </div>
+                <img src="${product.image}" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)">
+                <div class="absolute inset-x-4 bottom-2 md:bottom-4 transform translate-y-0 md:translate-y-24 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)]">
+                    <button onclick='addToCart(${productData})' class="w-full bg-primary text-white py-3 md:py-4 rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[8px] md:text-[9px] shadow-2xl hover:bg-highlight active:scale-95 transition-all">
+                        Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- info part -->
+            <div class="flex-grow flex flex-col justify-between px-6 py-4">
+                <!-- section 1: product info -->
+                <div class="space-y-1">
+                    <p class="text-[8px] font-black text-highlight uppercase tracking-[0.3em]">${product.category}</p>
+                    <h3 class="text-lg font-bold text-gray-900 truncate group-hover:text-primary transition-colors tracking-tight leading-tight">${product.title}</h3>
+                    <p class="text-[10px] text-gray-400 line-clamp-2 font-medium pt-2">Refined for the modern era. Curated with precision for high-end lifestyle performance.</p>
+                </div>
+
+                <!-- section 2: price and value -->
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                    <div class="flex flex-col">
+                        <span class="text-[7px] font-bold text-gray-300 uppercase tracking-widest">Metadata Price</span>
+                        <span class="text-xl font-black text-primary tracking-tighter">$${Math.floor(product.price)}.00</span>
+                    </div>
+                    <div class="h-9 w-9 bg-gray-50 rounded-full flex items-center justify-center text-gray-300 group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+                        <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                    </div>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+};
+
 //get items from store api with then
 fetch('https://fakestoreapi.com/products?limit=6')
     .then(res => res.json())
     .then(products => {
+        allProducts = products;
         const grid = document.getElementById('product-grid');
         if (!grid) return;
 
@@ -36,69 +112,18 @@ fetch('https://fakestoreapi.com/products?limit=6')
 
         //wait for 5 seconds for sync
         setTimeout(() => {
-            grid.innerHTML = ''; //remove loading cards
-            products.forEach(product => {
-                const isAvailable = product.rating.count > 150;
-                const statusTheme = isAvailable ? "text-green-600 bg-green-500" : "text-red-500 bg-red-500";
-                const statusLabel = isAvailable ? "Stock In" : "Stock Out";
+            renderGridProducts(allProducts);
+        }, 2500); //2.5 second wait
 
-                const productData = JSON.stringify(product).replace(/'/g, "&apos;");
-                
-                const card = document.createElement('div');
-                card.className = "group bg-white rounded-[2rem] border border-gray-100 shadow-[10px_20px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[10px_45px_100px_-20px_rgba(0,0,0,0.2)] transition-all duration-700 flex flex-col h-[430px] overflow-hidden";
-                card.innerHTML = `
-                    <!-- image part -->
-                    <div class="relative bg-gray-300/50 rounded-xl m-2 p-5 h-64 shrink-0 flex items-center justify-center overflow-hidden">
-                        <div class="absolute top-4 left-4 z-10 bg-white/60 backdrop-blur-xl px-2 py-1 rounded-full border border-white/20">
-                             <div class="flex items-center gap-2">
-                                 <span class="flex h-1.5 w-1.5 relative">
-                                     <span class="animate-bounce absolute inline-flex h-full w-full rounded-full ${statusTheme} opacity-75"></span>
-                                     <span class="relative inline-flex rounded-full h-1.5 w-1.5 ${statusTheme}"></span>
-                                 </span>
-                                 <span class="text-[8px] font-black uppercase tracking-[0.2em] text-gray-500">${statusLabel}</span>
-                             </div>
-                        </div>
-                        <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                            <div class="bg-white/90 backdrop-blur-xl border border-white/20 px-2.5 py-1.5 rounded-full flex items-center gap-1 shadow-md">
-                                <i class="fa-solid fa-star text-highlight text-[8px]"></i>
-                                <span class="text-[9px] font-black text-gray-900">${product.rating.rate}</span>
-                            </div>
-                            <button onclick='addToWishlist(${productData})' class="w-8 h-8 bg-white/95 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)] group/heart active:scale-95">
-                                <i class="fa-regular fa-heart text-[10px] group-hover/heart:scale-125 transition-transform"></i>
-                            </button>
-                        </div>
-                        <img src="${product.image}" class="max-h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)">
-                        <div class="absolute inset-x-4 bottom-2 md:bottom-4 transform translate-y-0 md:translate-y-24 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)]">
-                            <button onclick='addToCart(${productData})' class="w-full bg-primary text-white py-3 md:py-4 rounded-xl md:rounded-2xl font-bold uppercase tracking-widest text-[8px] md:text-[9px] shadow-2xl hover:bg-highlight active:scale-95 transition-all">
-                                Add to Bag
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- info part -->
-                    <div class="flex-grow flex flex-col justify-between px-6 py-4">
-                        <!-- section 1: product info -->
-                        <div class="space-y-1">
-                            <p class="text-[8px] font-black text-highlight uppercase tracking-[0.3em]">${product.category}</p>
-                            <h3 class="text-lg font-bold text-gray-900 truncate group-hover:text-primary transition-colors tracking-tight leading-tight">${product.title}</h3>
-                            <p class="text-[10px] text-gray-400 line-clamp-2 font-medium pt-2">Refined for the modern era. Curated with precision for high-end lifestyle performance.</p>
-                        </div>
-
-                        <!-- section 2: price and value -->
-                        <div class="flex items-center justify-between border-t border-gray-100 pt-3">
-                            <div class="flex flex-col">
-                                <span class="text-[7px] font-bold text-gray-300 uppercase tracking-widest">Metadata Price</span>
-                                <span class="text-xl font-black text-primary tracking-tighter">$${Math.floor(product.price)}.00</span>
-                            </div>
-                            <div class="h-9 w-9 bg-gray-50 rounded-full flex items-center justify-center text-gray-300 group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
-                                <i class="fa-solid fa-arrow-right text-[9px]"></i>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
+        // Handle Search filtering
+        const searchInputElements = document.querySelectorAll("#search-input");
+        searchInputElements.forEach(input => {
+            input.addEventListener("input", (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = allProducts.filter(p => p.title.toLowerCase().includes(term));
+                renderGridProducts(filtered);
             });
-        }, 2500); //3 second wait
+        });
     })
     .catch(err => {
         console.error('Error fetching products:', err);
